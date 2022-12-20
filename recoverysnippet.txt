@@ -1,0 +1,414 @@
+/*schema for patients*/
+const patient_inputs = new mongoose.Schema({
+    Department:{ type: String, required: true },
+    Patient_Name:{ type: String, required: true },
+    Patient_Age:{ type: Number, required: true },
+    Gender:{ type: String, required: true },
+    Contact_No:{ type: String, required: true},
+    Date:{ type: Date, required: true},
+    Realation:{ type: String}
+});
+
+/*PATIENT CD OPERATION*/
+/*new models for each department*/
+/*anesthesia*/
+var anesthesiainputs = new mongoose.model("AnesthesiologyDatas", patient_inputs);
+app.post("/Anesthesiology",async function(req,res){
+    const patientdata = new anesthesiainputs({
+        Department:"Anesthesiology Department",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+
+    await patientdata.save(async function(err){
+        if (err){
+            var error_name = "UNKNOWN ERROR";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            const phone = req.body.Contact_num;
+            console.log(phone);
+            const contact = await anesthesiainputs.findOne({Contact_No:phone});
+            var id = contact._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
+            /*res.redirect("/login");*/
+            res.render("patient_reg_success",{patid:id, routename:"Anesthesiology"})
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+        }
+    });
+});
+app.get("/Anesthesiology/:id", function (req, res) {
+    console.log(req.params.id)
+    anesthesiainputs.findById(req.params.id, function (err, user) {
+        if (err) {
+            res.render("Error_Page", {errmessage: "RECORD NOT FOUND"});
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("receipt", { users: user });
+        }
+    });
+});
+app.get("/Anesthesiology/delete/:id", function (req, res) {
+    console.log(req.params.id)
+    anesthesiainputs.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.render("Error_Page", {errmessage: "RECORD NOT FOUND"});
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("messagepage", {errmessage: "REGISTRATION CANCELLED"})
+        }
+    });
+});
+
+
+/*cadio*/
+var cardioinputs = new mongoose.model("CardiologyDatas", patient_inputs);
+app.post("/Cardiology",async function(req,res){
+    const patientdata = new cardioinputs({
+        Department:"Cardiology Department",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+    await patientdata.save(async function(err){
+        if (err){
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            const phone = req.body.Contact_num;
+            console.log(phone);
+            const contact = await cardioinputs.findOne({Contact_No:phone});
+            var id = contact._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
+            /*res.redirect("/login");*/
+            res.render("patient_reg_success",{patid:id})
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+        }
+    });
+});
+app.get("/Cardiology/:id", function (req, res) {
+    console.log(req.params.id)
+    anesthesiainputs.findById(req.params.id, function (err, user) {
+        if (err) {
+            res.render("Error_Page", {errmessage: "RECORD NOT FOUND"});
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("receipt", { users: user });
+        }
+    });
+});
+app.get("/Cardiology/delete/:id", function (req, res) {
+    console.log(req.params.id)
+    anesthesiainputs.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.render("Error_Page", {errmessage: "RECORD NOT FOUND"});
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("messagepage", {errmessage: "REGISTRATION CANCELLED"})
+        }
+    });
+});
+
+/*ent*/
+var entinputs = new mongoose.model("ENTDatas", patient_inputs);
+app.post("/ENT",async function(req,res){
+    const patientdata = new entinputs({
+        Department:"ENT Department",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+    await patientdata.save(async function(err){
+        if (err){
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            const phone = req.body.Contact_num;
+            console.log(phone);
+            const contact = await entinputs.findOne({Contact_No:phone});
+            var id = contact._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
+            /*res.redirect("/login");*/
+            res.render("patient_reg_success",{patid:id, routename:"ENT"})
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+        }
+    });
+});
+app.get("/ENT/:id", function (req, res) {
+    console.log(req.params.id)
+    anesthesiainputs.findById(req.params.id, function (err, user) {
+        if (err) {
+            res.render("Error_Page", {errmessage: "RECORD NOT FOUND"});
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("receipt", { users: user });
+        }
+    });
+});
+app.get("/ENT/delete/:id", function (req, res) {
+    console.log(req.params.id)
+    anesthesiainputs.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.render("Error_Page", {errmessage: "RECORD NOT FOUND"});
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("messagepage", {errmessage: "REGISTRATION CANCELLED"})
+        }
+    });
+});
+
+
+/*Gastro*/
+var Gastroinputs = new mongoose.model("GastroDatas", patient_inputs);
+app.post("/Gastroenterology",async function(req,res){
+    const patientdata = new Gastroinputs({
+        Department:"Gastroenterology Department",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+    await patientdata.save(async function(err){
+        if (err){
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            const phone = req.body.Contact_num;
+            console.log(phone);
+            const contact = await Gastroinputs.findOne({Contact_No:phone});
+            var id = contact._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
+            /*res.redirect("/login");*/
+            res.render("patient_reg_success",{patid:id})
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+        }
+    });
+});
+app.get("/Gastroenterology/:id", function (req, res) {
+    console.log(req.params.id)
+    anesthesiainputs.findById(req.params.id, function (err, user) {
+        if (err) {
+            res.render("Error_Page", {errmessage: "RECORD NOT FOUND"});
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("receipt", { users: user });
+        }
+    });
+});
+app.get("/Gastroenterology/delete/:id", function (req, res) {
+    console.log(req.params.id)
+    anesthesiainputs.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.render("Error_Page", {errmessage: "RECORD NOT FOUND"});
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("messagepage", {errmessage: "REGISTRATION CANCELLED"})
+        }
+    });
+});
+
+
+/*General*/
+var generalinputs = new mongoose.model("GeneralDatas", patient_inputs);
+app.post("/General",async function(req,res){
+    const patientdata = new generalinputs({
+        Department:"General Surgery",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+    await patientdata.save(function(err){
+        if (err){
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            /*res.redirect("/login");*/
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+        }
+    });
+});
+/*ent*/
+var gyninputs = new mongoose.model("GynaecologyDatas", patient_inputs);
+app.post("/Gynaecology",async function(req,res){
+    const patientdata = new gyninputs({
+        Department:"Gynaecology Department",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+    await patientdata.save(function(err){
+        if (err){
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            /*res.redirect("/login");*/
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+        }
+    });
+});
+/*Pediatrics*/
+var pediainputs = new mongoose.model("PediatricsDatas", patient_inputs);
+app.post("/Pediatrics",async function(req,res){
+    const patientdata = new pediainputs({
+        Department:"Pediatrics Department",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+    await patientdata.save(function(err){
+        if (err){
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            /*res.redirect("/login");*/
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+        }
+    });
+});
+/*Neurology*/
+var neuroinputs = new mongoose.model("NeurologyDatas", patient_inputs);
+app.post("/Neurology",async function(req,res){
+    const patientdata = new neuroinputs({
+        Department:"Neurology Department",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+    await patientdata.save(function(err){
+        if (err){
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            /*res.redirect("/login");*/
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+        }
+    });
+});
+/*Orthopaedic*/
+var orthoinputs = new mongoose.model("OrthopaedicDatas", patient_inputs);
+app.post("/Orthopaedic",async function(req,res){
+    const patientdata = new orthoinputs({
+        Department:"Orthopaedic Department",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+    await patientdata.save(function(err){
+        if (err){
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            /*res.redirect("/login");*/
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+        }
+    });
+});
+/*Urology*/
+var uroinputs = new mongoose.model("UrologyDatas", patient_inputs);
+app.post("/Urology",async function(req,res){
+    const patientdata = new uroinputs({
+        Department:"Urology Department",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+    await patientdata.save(function(err){
+        if (err){
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            /*res.redirect("/login");*/
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+        }
+    });
+});
+/*Psychiatry*/
+var phshycoinputs = new mongoose.model("PsychiatryDatas", patient_inputs);
+app.post("/Psychiatry",async function(req,res){
+    const patientdata = new phshycoinputs({
+        Department:"Psychiatry Department",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+    await patientdata.save(function(err){
+        if (err){
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            /*res.redirect("/login");*/
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+        }
+    });
+});
+
+/*database for Anesthesiology department*/
+/*test data*/
+/*const firstdata = new userinputs({
+    Name:"deep",
+    Gender:"male",
+    DOB:'2002-12-09',
+    Phone_No:"97934756323",
+    Email:"deep@gmail.com",
+    Password:"deep1234"
+});
+firstdata.save();*/
+/*--------*/

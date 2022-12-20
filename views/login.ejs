@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome back</title>
+    <link rel="stylesheet" href="../public/css/signin_style.css">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+</head>
+
+<style>
+</style>
+
+<body>
+    <!--header-->
+    <header class="header_panel">
+        <!--left for logo-->
+        <div class="top_image">
+            <a href="#" class="logo_link"><img class="navbar_header_image" src="../images/logo.png" alt="logo"></a>
+        </div>
+
+        <div class="right" id="topbar">
+            <a href="#">🏠 Home</a>
+            <a href="#">👤 Account info</a>
+            <a href="#">📋 your appointments</a>
+            <a href="#">💊 Buy medicines</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+    </header>
+
+    <!--form section-->
+    <div class="form_section">
+        <div class="input_area">
+            <form class="signin_form" action="/login" method="post">
+                <div class="mid">
+                    <p class="welcome_text">welcome back, we missed you</p>
+                </div>
+                <div class="avatar">
+                    <img src="../images/avatar.png" alt="">
+                </div>
+                <input class="fill_inputs" type="email" name="email" id="" placeholder="📧 Enter your email." required>
+                <input class="fill_inputs" type="password" name="cust_password" id=""
+                    placeholder="🔑 Enter password." minlength="6" maxlength="12" required>
+                <button class="register_btn form_buttons">Log-in</button>
+                <p>Get in touch</p>
+                <div class="icons">
+                    <a href=""><i class="fab fa-instagram fa-2x" style="color: rgb(144, 0, 193)"></i></a>
+                    <a href=""><i class="fab fa-facebook fa-2x"></i></a>
+                    <a href=""><i class="fab fa-twitter fa-2x" style="color: rgb(0, 144, 201)"></i></a>
+                </div>
+            </form>
+            <a href="./user_register.html" target="_blank">Not an user?</a>
+        </div>
+    </div>
+
+    <!--footer-->
+    <div class="footer_panel">
+        <footer id="footer">
+            <p class="copyright-text">©2022-2023 Hospital.LLC . All Rights Reserved.</p>
+            <a class="terms_and_conditions" href="" target="_blank">Terms and Conditions</a>
+            <div id="google_translate_element">Translate this page</div>
+            <p class="bottom text"> proudly, Made in India ❤️</p>
+
+        </footer>
+    </div>
+</body>
+
+<!--responsive navbar-->
+<script>
+    function myFunction() {
+        var x = document.getElementById("topbar");
+        if (x.className === "right") {
+            x.className += " responsive";
+        } else {
+            x.className = "right";
+        }
+    }
+</script>
+
+</html>

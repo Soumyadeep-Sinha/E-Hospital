@@ -1,0 +1,216 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header_panel {
+    background-color: #2D033B;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 575px) {
+    .header_panel {
+        flex-direction: column;
+    }
+
+    .top_image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 20%;
+    }
+}
+
+.right a {
+    float: left;
+    color: rgb(255, 255, 255);
+    margin: 15px;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 24px;
+    text-align: center;
+}
+
+.right a:hover {
+    text-decoration: none;
+    color: rgb(241, 83, 59);
+    transition: 0.5s;
+}
+
+.right .icon {
+    display: none;
+}
+
+@media screen and (max-width: 1276px) {
+    .right a {
+        display: none;
+    }
+
+    .right a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+.navbar_header_image {
+    height: 100px;
+    width: 60%;
+    margin: 0 100px 0 20px;
+}
+
+@media screen and (max-width: 1276px) {
+    .right.responsive {
+        position: relative;
+    }
+
+    .right.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+.right.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+}
+
+/*heading*/
+
+.heading{
+    text-align: center;
+    padding: 20px;
+    background-color: #F3CCFF;
+    margin: 0;
+}
+
+.mainsection{
+    display: flex;
+}
+
+/*form area*/
+
+.patientinfo{
+    background-color: #F0DBDB;
+    width: 50%;
+    padding: 30px;
+}
+
+.deptname{
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(119, 0, 0);
+}
+
+.register_patient{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    margin: 20px 0;
+    width: 80%;
+    padding: 10px;border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.btn{
+    margin-top: 20px;
+    width: 80%;
+    margin-left: 10px;
+    padding: 10px;border: 1px solid grey;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: rgb(41, 243, 176);
+}
+
+.btn:hover{
+    background-color: aquamarine;
+    transition: 0.5s;
+}
+
+.goback{
+    width: 80%;
+    margin-top: 30px;
+    margin-left: 10px;
+    padding: 10px;border: 1px solid grey;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: rgb(243, 182, 41);
+}
+
+.goback:hover{
+    background-color: rgb(255, 193, 127);
+    transition: 0.5s;
+}
+
+.radio_options {
+    margin-bottom: 20px;
+}
+.radio_options input{
+    margin: 5px 0;
+    width: 10%;
+    border: 1px solid grey;
+}
+
+.category{
+    display: flex;
+    flex-direction: column;
+}
+
+.image{
+    background-color: #F0DBDB;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    display: flex;
+    width: 50%;
+}
+
+.image img{
+    width: 500px;
+    border: 5px solid rgb(89, 89, 90);
+    border-radius: 30px;
+}
+
+/*footer*/
+.footer_panel {
+    text-align: center;
+    background: #130a24;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    padding: 3%;
+    line-height: 1.5;
+}
+
+.copyright-text {
+    margin: 0px;
+    padding: 20px;
+}
+
+.terms_and_conditions{
+    color: #D89CF6;
+    text-decoration: none;
+}
+.terms_and_conditions:hover{
+    color: #fffeff;
+    text-decoration: none;
+    transition: 1s;
+}
+
+@media only screen and (max-width: 1137px){
+    .footer_panel{
+        padding: 50px;
+    }
+}

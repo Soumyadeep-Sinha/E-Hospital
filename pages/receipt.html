@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User info</title>
+    <link rel="stylesheet" href="../public/css/receipt.css">
+    <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>    
+</head>
+
+<style>
+    
+</style>
+
+<body>
+    <div class="first_div">
+        <img src="../images/index_page_logo.png" alt="index logo">
+        <p>COMPUTER GENERATED RECEIPT</p>
+    </div>
+    <div class="fees">
+        <p>Hospital Charge : Rs 250</p>
+        <p>Status : Unpaid (will be paid after visit)</p>
+        <form action="" method="get" id="redirect-form" class="cancel" onsubmit="redirect(); return false">
+            <input type="text" name="del" id="del" placeholder="Enter the patient id" class="uid_data" required>
+            <button class="del_btn"> Cancel Registration</button>
+        </form>
+        <script>
+            function redirect(){       
+                window.location.href="http://localhost:3000/<%=routename%>/delete/" + document.getElementById("del").value;              
+            }
+        </script>
+    </div>
+    <hr size="2" width="100%" color="black">
+    <div class="section">
+        <div class="account_data">
+            <h3>Patient Details</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Patient ID</td>
+                        <td>:</td>
+                        <td>
+                            <%= users._id %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>
+                            <%= users.Patient_Name %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Age</td>
+                        <td>:</td>
+                        <td>
+                            <%= users.Patient_Age %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Gender</td>
+                        <td>:</td>
+                        <td>
+                            <%= users.Gender %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Phone Number</td>
+                        <td>:</td>
+                        <td>
+                            <%= users.Contact_No %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Date</td>
+                        <td>:</td>
+                        <td>
+                            <%= users.Date %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Relation</td>
+                        <td>:</td>
+                        <td>
+                            <%= users.Realation %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+        <hr size="2" width="100%" color="black">
+    </div>
+    <button onclick="printPage()" class="print_btn">Print Receipt</button>
+</body>
+<!--printer-->
+<script>
+    function printPage(){
+        window.print();
+    }
+</script>
+<!--responsive navbar-->
+<script>
+    function myFunction() {
+        var x = document.getElementById("topbar");
+        if (x.className === "right") {
+            x.className += " responsive";
+        } else {
+            x.className = "right";
+        }
+    }
+</script>
+</html>

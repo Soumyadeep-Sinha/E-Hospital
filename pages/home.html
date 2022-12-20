@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/homepage_style.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+</head>
+<body>
+    <!--header-->
+    <header class="header_panel">
+        <!--left for logo-->
+        <div class="top_image">
+            <a href="#" class="logo_link"><img class="navbar_header_image"
+                    src="../images/logo.png" alt="logo"></a>
+        </div>
+
+        <div class="right" id="topbar">
+            <a href="#">🏠 Home</a>
+            <a href="#">👤 Account info</a>
+            <a href="#">📋 your appointments</a>
+            <a href="#">💊 Buy medicines</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+    </header>
+    
+    <!--second part-->
+    <div class="content_box">
+        <!--left part-->
+        <div class="announcements">
+            <h2 class="alerts">Latest Updates</h2>
+            <ul class="updates">
+                <li>Online portal will be closed till saturday for routine maintainence.</li>
+                <li>Medicines are in stock.</li>
+                <li>Equipments are in stock.</li>
+                <li>Ambulance service available.</li>
+                <li>Job : Cleaning staff needed.</li>
+                <a href="http://localhost:3000/user/<%=theid%>">View or Update your Data.</a>
+            </ul>
+        </div>
+        <!--right part-->
+        <div class="category">
+            <h2 class="department">Select a department to book an appointment</h2>
+            <ul class="dept">
+                <li><a href="http://localhost:3000/Anesthesiology">Anesthesiology department</a></li>
+                <li><a href="http://localhost:3000/Cardiology">Cardiology department</a></li>
+                <li><a href="http://localhost:3000/ENT">ENT department</a></li>
+                <li><a href="http://localhost:3000/Gastroenterology">Gastroenterology department</a></li>
+                <li><a href="http://localhost:3000/General">General surgery</a></li>
+                <li><a href="http://localhost:3000/Gynaecology">Gynaecology department</a></li>
+                <li><a href="http://localhost:3000/Pediatrics">Pediatrics department</a></li>
+                <li><a href="http://localhost:3000/Neurology">Neurology department</a></li>
+                <li><a href="http://localhost:3000/Orthopaedic">Orthopaedic department</a></li>
+                <li><a href="http://localhost:3000/Urology">Urology department</a></li>
+                <li><a href="http://localhost:3000/Psychiatry">Psychiatry department</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--third part-->
+    <div class="extras">
+        <!--left part-->
+        <div class="donate_blood">
+            <h1><a href="">🩸 Donate Blood</a></h1>
+        </div>
+        <!--right part-->
+        <div class="contacts">
+            <h2 class="contact_heading">Contact Us</h2>
+            <ul class="details">
+                <li>Email: contactus@gmail.com</li>
+                <li>Contact No. : 0755-8555-3234</li>
+                <li>Address : ABC hospital, MP Nagar, Zone - 3, Bhopal</li>
+            </ul>
+        </div>
+    </div>
+
+    <!--footer-->
+    <div class="footer_panel">
+        <footer id="footer">
+            <p class="copyright-text">©2022-2023 Hospital.LLC . All Rights Reserved.</p>
+            <a class="terms_and_conditions" href="" target="_blank">Terms and Conditions</a>
+            <div id="google_translate_element">Translate this page</div>
+            <p class="bottom text"> proudly, Made in India ❤️</p>
+
+        </footer>
+    </div>
+
+
+</body>
+
+<!--responsive navbar-->
+<script>
+    function myFunction() {
+        var x = document.getElementById("topbar");
+        if (x.className === "right") {
+            x.className += " responsive";
+        } else {
+            x.className = "right";
+        }
+    }
+</script>
+
+<!--google translate API-->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en' },
+            'google_translate_element'
+        );
+    } 
+</script>
+<script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+</html>

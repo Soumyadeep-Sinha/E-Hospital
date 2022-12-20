@@ -1,0 +1,54 @@
+const anesthesiainputs = new mongoose.model("AnesthesiologyDatas", patient_inputs);
+/*posting registrations*/
+app.post("/Anesthesiology",async function(req,res){
+    const patientdata = new anesthesiainputs({
+        Department:"Anesthesiology Department",
+        Patient_Name:req.body.Patient_name,
+        Patient_Age:req.body.Patient_age,
+        Gender:req.body.gender,
+        Contact_No:req.body.Contact_num,
+        Date:req.body.App_date,
+        Realation:req.body.Patient_Rel    
+    });
+    await patientdata.save(async function(err){
+        if (err){
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page",{errmessage: error_name})
+            console.log(err);
+        }else{
+            /*res.redirect("/login");*/
+            const contact = req.body.Contact_num;
+            const found = await anesthesiainputs.findOne({ Contact_No: contact });
+            var id = found._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+            console.log(id);
+            res.render("patient_reg_success", {patid:id,routename:"Anesthesiology"})
+        }
+    })
+})
+
+app.get("/Anesthesiology/:id", function (req, res) {
+    console.log(req.params.id)
+    anesthesiainputs.findById(req.params.id, function (err, user) {
+        if (err) {
+            res.render("Error_Page", {errmessage: "RECORD NOT FOUND"});
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("receipt", { users: user, routename: "Anesthesiology"});
+        }
+    });
+});
+app.get("/Anesthesiology/delete/:id", function (req, res) {
+    console.log(req.params.id)
+    anesthesiainputs.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.render("Error_Page", {errmessage: "RECORD NOT FOUND"});
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("messagepage", {errmessage: "REGISTRATION CANCELLED"})
+        }
+    });
+});

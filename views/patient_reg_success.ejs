@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="../css/patient_reg_success.css">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+</head>
+
+<style>
+    
+</style>
+<body>
+    <!--header-->
+    <header class="header_panel">
+        <!--left for logo-->
+        <div class="top_image">
+            <a href="#" class="logo_link"><img class="navbar_header_image" src="../images/logo.png" alt="logo"></a>
+        </div>
+
+        <div class="right" id="topbar">
+            <a href="#">🏠 Home</a>
+            <a href="#">👤 Account info</a>
+            <a href="#">📋 your appointments</a>
+            <a href="#">💊 Buy medicines</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+    </header>
+
+    <div class="secondbox">
+        <h1>Appointment Confirmed.</h1>
+        <p>your patient id is : <%=patid%></p>
+        <form action="" method="get" id="redirect-form" class="goahead" onsubmit="redirect(); return false">
+            <input type="text" name="uid" id="myuid" placeholder="Enter the unique user id" class="uid_data" required>
+            <button class="see_btn"> get receipt</button>
+        </form>
+        <!--<form action="" method="get" id="redirect-form" class="cancel" onsubmit="redirect(); return false">
+            <input type="text" name="del" id="del" placeholder="Enter the unique user id" class="uid_data" required>
+            <button class="del_btn"> Cancel Registration</button>
+        </form>-->
+        <script>
+            function redirect(){       
+                window.location.href="http://localhost:3000/<%=routename%>/" + document.getElementById("myuid").value;              
+            }
+        </script>
+        <!--<script>
+            function redirect(){       
+                window.location.href="http://localhost:3000/<%=routename%>/delete/" + document.getElementById("del").value;              
+            }
+        </script>-->
+        
+        <div class="paymentinfo">
+            <p>Registration fees : Rs 250</p>
+            <p>It will be charged after you have visited the hospital.</p>
+            <p>National ID card may be needed for verification purposes.</p>
+        </div>
+    </div>
+    
+</body>
+<!--responsive navbar-->
+<script>
+    function myFunction() {
+        var x = document.getElementById("topbar");
+        if (x.className === "right") {
+            x.className += " responsive";
+        } else {
+            x.className = "right";
+        }
+    }
+</script>
+</html>

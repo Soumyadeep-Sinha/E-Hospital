@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Details</title>
+        <link rel="stylesheet" href="../css/user_info.css">
+    
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+        
+    </head>
+<body>
+    <!--header-->
+    <header class="header_panel">
+        <!--left for logo-->
+        <div class="top_image">
+            <a href="#" class="logo_link"><img class="navbar_header_image" src="../images/logo.png" alt="logo"></a>
+        </div>
+
+        <div class="right" id="topbar">
+            <a href="#">🏠 Home</a>
+            <a href="#">👤 Account info</a>
+            <a href="#">📋 your appointments</a>
+            <a href="#">💊 Buy medicines</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </header>
+    <div class="olddata">
+        <p>UID : <%=Users._id%></p>
+        <p>Name : <%=Users.Name%></p>
+        <p>Email : <%=Users.Email%></p>
+        <P>phone NO. : <%=Users.Phone_No%></P>
+        <p>Password : <%=Users.Password%></p>
+        <p>Note: copy the UID if u want to updae user info</p>
+    </div>
+
+    <div class="link">
+        <a href="http://localhost:3000/update">CLICK HERE TO UPDATE DATA</a>
+    </div>
+    
+    <div class="delete">
+        <form action="" method="get" id="redirect-form" class="cancel" onsubmit="deleuser(); return false">
+            <input type="text" name="del" id="del" placeholder="Enter the UID to confirm" class="uid_data" required>
+            <button class="del_btn"> Delete Account </button>
+        </form>
+        <script>
+            function deleuser(){       
+                window.location.href="http://localhost:3000/user/delete/" + document.getElementById("del").value;              
+            }
+        </script>
+    </div>
+    <!--footer-->
+    <div class="footer_panel">
+        <footer id="footer">
+            <p class="copyright-text">©2022-2023 Hospital.LLC . All Rights Reserved.</p>
+            <a class="terms_and_conditions" href="" target="_blank">Terms and Conditions</a>
+            <div id="google_translate_element">Translate this page</div>
+            <p class="bottom text"> proudly, Made in India ❤️</p>
+
+        </footer>
+    </div>
+    
+</body>
+</html>

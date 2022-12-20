@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <link rel="stylesheet" href="../public/css/patient_registration_style.css">
+
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+    
+</head>
+
+<body>
+    <!--header-->
+    <header class="header_panel">
+        <!--left for logo-->
+        <div class="top_image">
+            <a href="#" class="logo_link"><img class="navbar_header_image" src="../images/logo.png" alt="logo"></a>
+        </div>
+
+        <div class="right" id="topbar">
+            <a href="#">🏠 Home</a>
+            <a href="#">👤 Account info</a>
+            <a href="#">📋 your appointments</a>
+            <a href="#">💊 Buy medicines</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+    </header>
+    <!--heading-->
+    <h2 class="heading">E - HOSPITAL online user registration.</h2>
+
+
+    <div class="mainsection">
+        <div class="patientinfo">
+            <p class="deptname">Name Of department : <%=nameofdept%></p>
+            <form action="/Anesthesiology" method="post" class="register_patient">
+                <div class="category">
+                    <label for="name">Patient name </label>
+                    <input type="text" name="Patient_name" id="name" placeholder="Enter patient name." required>
+                </div>
+                <div class="category">
+                    <label for="age">Patient age </label>
+                    <input type="number" name="Patient_age" id="age" required placeholder="Enter patient's age">
+                </div>
+                <div class="category">
+                    <div class="radio_options">
+                        <p>Gender</p>
+                        <input type="radio" id="male" name="gender" value="male" required>
+                        <label for="male">male</label><br>
+        
+                        <input type="radio" id="female" name="gender" value="female" required>
+                        <label for="female">female</label><br>
+        
+                        <input type="radio" id="Others" name="gender" value="Others" required>
+                        <label for="Others">Others</label><br>
+                    </div>
+                </div>
+                <div class="category">
+                    <label for="number">Contact number</label>
+                    <input type="text" name="Contact_num" id="number" placeholder="Enter phone No." required>
+                </div>
+                <div class="category">
+                    <label for="date">Appointment Date</label>
+                    <input type="date" name="App_date" id="date" required>
+                </div>
+                <div class="category">
+                    <label for="aff">Patient Relation (optional)</label>
+                    <input type="text" name="Patient_Rel" id="aff">
+                </div>
+
+                <button type="submit" class="btn">Confirm Appointment and proceed to payment</button>
+            </form>
+            
+            <form action="/home" method="get">
+                <button class="goback" type="submit">Go back to previous page</button>
+            </form>
+        </div>
+
+        <div class="image">
+        <img src="../images/getwellsoonimage.png" alt="">
+        </div>
+    </div>
+
+    <!--footer-->
+    <div class="footer_panel">
+        <footer id="footer">
+            <p class="copyright-text">©2022-2023 Hospital.LLC . All Rights Reserved.</p>
+            <a class="terms_and_conditions" href="" target="_blank">Terms and Conditions</a>
+            <div id="google_translate_element">Translate this page</div>
+            <p class="bottom text"> proudly, Made in India ❤️</p>
+
+        </footer>
+    </div>
+
+</body>
+
+<!--responsive navbar-->
+<script>
+    function myFunction() {
+        var x = document.getElementById("topbar");
+        if (x.className === "right") {
+            x.className += " responsive";
+        } else {
+            x.className = "right";
+        }
+    }
+</script>
+
+<!--google translate API-->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en' },
+            'google_translate_element'
+        );
+    } 
+</script>
+<script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+</html>

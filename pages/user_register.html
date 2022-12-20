@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register now</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/register_style.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header class="header_panel">
+        <!--left for logo-->
+        <div class="top_image">
+            <a href="#" class="logo_link"><img class="navbar_header_image" src="../images/logo.png" alt="logo"></a>
+        </div>
+
+        <div class="right" id="topbar">
+            <a href="#">🏠 Home</a>
+            <a href="#">👤 Account info</a>
+            <a href="#">📋 your appointments</a>
+            <a href="#">💊 Buy medicines</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+    </header>
+
+    <!--form section-->
+    <div class="form_section">
+        <div class="input_area">
+            <form class="signin_form" action="/register" method="post">
+                <div class="mid">
+                    <p class="welcome_text">Create a free account now.</p>
+                </div>
+                <div class="avatar">
+                    <img src="../images/avatar.png" alt="">
+                </div>
+                <input class="fill_inputs" type="text" name="full_name" placeholder="Enter your full name." required>
+
+                <div class="radio_options">
+                    <p>Gender</p>
+                    <input type="radio" id="male" name="gender" value="male" required>
+                    <label for="male">male</label><br>
+    
+                    <input type="radio" id="female" name="gender" value="female" required>
+                    <label for="female">female</label><br>
+    
+                    <input type="radio" id="Others" name="gender" value="Others" required>
+                    <label for="Others">Others</label><br>
+                </div>
+
+                <div class="dob_section">
+                    <p>📅 Enter your Date of Birth</p>
+                    <input class="fill_inputs" type="date" name="date_of_birth" id=""
+                        placeholder="Enter yout date of birth." required>
+                </div>
+                <input class="fill_inputs" type="text" name="mobile_no" id=""
+                    placeholder="☎️ Enter your phone Number." required>
+                <input class="fill_inputs" type="email" name="email" id="" placeholder="📧 Enter your email." required>
+                <input class="fill_inputs" type="password" name="usr_password" id=""
+                    placeholder="🔑 Create a password." minlength="6" maxlength="12" required>
+                <input class="fill_inputs" type="password" name="usr_password_repeat" id=""
+                    placeholder="🔑 Confirm password." minlength="6" maxlength="12" required>
+                <div class="checkb">
+                    <input type="checkbox" name="terms_and_conditions" id="" required>
+                    <p class="terms_text">I agree to the <a class="terms_text"
+                            href="https://Terms-and-conditions.soumyadeep0842.repl.co" target="_blank">terms and
+                            conditions.</a></p>
+                </div>
+                <button class="register_btn form_buttons">Register now</button>
+                <a href="http://localhost:3000/login" style="align-items: centre;">Already a user?</a>
+                <p>Get in touch</p>
+                <div class="icons">
+                    <a href=""><i class="fab fa-instagram fa-2x" style="color: rgb(244, 211, 255)"></i></a>
+                    <a href=""><i class="fab fa-facebook fa-2x"></i></a>
+                    <a href=""><i class="fab fa-twitter fa-2x" style="color: skyblue"></i></a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--footer-->
+    <div class="footer_panel">
+        <footer id="footer">
+            <p class="copyright-text">©2022-2023 Hospital.LLC . All Rights Reserved.</p>
+            <a class="terms_and_conditions" href="" target="_blank">Terms and Conditions</a>
+            <div id="google_translate_element">Translate this page</div>
+            <p class="bottom text"> proudly, Made in India ❤️</p>
+
+        </footer>
+    </div>
+</body>
+
+<!--responsive navbar-->
+<script>
+    function myFunction() {
+        var x = document.getElementById("topbar");
+        if (x.className === "right") {
+            x.className += " responsive";
+        } else {
+            x.className = "right";
+        }
+    }
+</script>
+
+<!--google translate API-->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en' },
+            'google_translate_element'
+        );
+    } 
+</script>
+<script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</html>
