@@ -177,6 +177,7 @@ body {
     border: 1px solid teal;
     background-color: red;
     color: white;
+    transition: 1s;
 }
 
 .cancel button:hover{

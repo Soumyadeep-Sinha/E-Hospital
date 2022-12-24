@@ -19,8 +19,8 @@
         </div>
 
         <div class="right" id="topbar">
-            <a href="#">🏠 Home</a>
-            <a href="#">👤 Account info</a>
+            <a href="http://localhost:3000/">🏠 Home</a>
+            <a href="http://localhost:3000/user/<%=theid%>">👤 Account info</a>
             <a href="#">📋 your appointments</a>
             <a href="#">💊 Buy medicines</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -29,6 +29,12 @@
         </div>
 
     </header>
+    <div class="welcome">
+        <h2 class="welcome_txt">Welcome : <%=usrname%></h2>
+        <form action="/logout" method="post" class="logout">
+            <button class="logutbtn" type="submit">Logout</button>
+        </form>
+    </div>
     
     <!--second part-->
     <div class="content_box">
@@ -41,7 +47,6 @@
                 <li>Equipments are in stock.</li>
                 <li>Ambulance service available.</li>
                 <li>Job : Cleaning staff needed.</li>
-                <a href="http://localhost:3000/user/<%=theid%>">View or Update your Data.</a>
             </ul>
         </div>
         <!--right part-->

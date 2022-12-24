@@ -1,5 +1,7 @@
 /*imporing node modules*/
 const express = require("express");
+const session = require("express-session");
+const mongodbSession = require("connect-mongodb-session")(session);
 require("dotenv").config();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -32,6 +34,27 @@ mongoose.connect(locale, function (err) {
 });
 /*connection function ends*/
 
+/*initializing mongodb sessions*/
+const store = new mongodbSession({
+    uri: locale,
+    collection: "MySessions",
+})
+
+app.use(session({
+    secret : "key that will sign cookie",
+    resave : false,
+    saveUninitialized : false,
+    store: store
+}));
+
+const isAuth = function(req,res,next){
+    if(req.session.isAuth){
+        next();
+    }else{
+        res.redirect("/login");
+    }
+}
+
 /*creating routes*/
 app.use(express.static('public'));
 
@@ -45,10 +68,6 @@ app.get("/register", function (req, res) {
 
 app.get("/login", function (req, res) {
     res.sendFile(__dirname + "/pages/login.html");
-});
-
-app.get("/home", function (req, res) {
-    res.sendFile(__dirname + "/pages/home.html");
 });
 
 app.get("/update", function (req, res) {
@@ -114,9 +133,11 @@ app.post("/login", async function (req, res) {
         console.log(usermail);
         console.log(usermail.Password);*/
         var id = usermail._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
+        var usrname = usermail.Name;
         if (usermail.Password === password) {
+            req.session.isAuth = true;
             console.log("success");
-            res.render("home", { theid: id })
+            res.render("home", { theid: id, usrname: usrname})
             /*res.send("<h2>you are signed in, your unique user ID is : " + id+"</h2>");*/
         } else {
             var err_name = "Sign-in failed. (invalid credentials!). You can go back and try again."
@@ -131,6 +152,7 @@ app.post("/login", async function (req, res) {
         console.log("Not registered");
     }
 });
+
 
 /*creating USER CRUD FUNCTIONS*/
 app.get("/user/:id", function (req, res) {
@@ -397,7 +419,16 @@ app.get("/Cardiology/delete/:id", function (req, res) {
 /*similarly other departments can be created*/
 /*this is a demo project so i did not create routes for all departments*/
 
-
+/*logut function*/
+app.post("/logout", function(req,res){
+    req.session.destroy(function(err){
+        if(err){
+            throw err;
+        }else{
+            res.redirect("/");
+        }
+    })
+})
 /*server starter*/
 app.listen(3000, function () {
     console.log("Server has started successfully on port 3000");

@@ -41,6 +41,7 @@ body {
     background-color: bisque;
     color: navy;
     border-radius: 10px;
+    transition: 1s;
 }
 
 .usefulbtns:hover{
@@ -58,6 +59,7 @@ body {
     background-color: red;
     color: white;
     border-radius: 10px;
+    transition: 1s;
 }
 
 .emergency:hover{
