@@ -136,6 +136,7 @@ app.post("/login", async function (req, res) {
         var usrname = usermail.Name;
         if (usermail.Password === password) {
             req.session.isAuth = true;
+            console.log("Session ID -->" + req.session.id);
             console.log("success");
             res.render("home", { theid: id, usrname: usrname})
             /*res.send("<h2>you are signed in, your unique user ID is : " + id+"</h2>");*/
