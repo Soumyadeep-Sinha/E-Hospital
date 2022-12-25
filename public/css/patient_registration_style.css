@@ -183,6 +183,22 @@ input{
     border-radius: 30px;
 }
 
+@media only screen and (max-width: 1000px){
+    .mainsection{
+        flex-direction: column;
+    }
+
+    .patientinfo{
+        width: 100%;
+    }
+
+    .image{
+        display: none;
+        visibility: hidden;
+    }
+    
+}
+
 /*footer*/
 .footer_panel {
     text-align: center;

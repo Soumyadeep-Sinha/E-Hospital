@@ -120,6 +120,25 @@ body {
     background-color: maroon;
     transition: 0.5s;
 }
+
+@media screen and (max-width: 600px){
+    .welcome{
+        flex-direction: column;
+    }
+
+    .welcome h2{
+        width: 90%;
+        font-size: 18px;
+    }
+
+    .logout{
+        width: 100%;
+    }
+
+    .logutbtn{
+        width: 75%;
+    }
+}
 /*second part*/
 .content_box{
     display: flex;
@@ -201,6 +220,7 @@ body {
     text-decoration: none;
     font-size: 24px;
     color: rgb(109, 109, 109);
+    transition: 0.5s;
 }
 
 .dept a:hover{
@@ -208,6 +228,29 @@ body {
     transition: 0.5s;
 }
 
+@media screen and (max-width: 800px){
+    .content_box{
+        flex-direction: column;
+    }
+
+    .announcements{
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .announcements li{
+        font-size: 20px;
+    }
+
+    .category{
+        width:90%;
+        font-size: 18px;
+    }
+
+    .dept a{
+        font-size: 18px;
+    }
+}
 /*third part*/
 
 .extras{
@@ -229,6 +272,7 @@ body {
 .donate_blood a{
     text-decoration: none;
     color: red;
+    transition: 0.5s;
 }
 
 .donate_blood a:hover{
@@ -246,6 +290,21 @@ body {
 
 .contacts h2{
     text-align: center;
+}
+
+@media screen and (max-width: 800px){
+    .extras{
+        flex-direction: column;
+    }
+
+    .donate_blood{
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .contacts{
+        width: 90%;
+    }
 }
 
 /*footer*/

@@ -111,3 +111,21 @@ body {
         padding: 50px;
     }
 }
+
+@media screen and (max-width: 600px){
+    .first_div{
+        height: 10vh;
+    }
+
+    .mainsection{
+        flex-direction: column-reverse;
+    }
+
+    .announcements{
+        width: 90%;
+    }
+
+    .buttons{
+        width: 100%;
+    }
+}

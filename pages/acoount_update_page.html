@@ -20,7 +20,7 @@
         </div>
 
         <div class="right" id="topbar">
-            <a href="#">🏠 Home</a>
+            <a href="http://localhost:3000/">🏠 Home</a>
             <a href="#">👤 Account info</a>
             <a href="#">📋 your appointments</a>
             <a href="#">💊 Buy medicines</a>
@@ -51,4 +51,28 @@
     </div>
     
 </body>
+<!--responsive navbar-->
+<script>
+    function myFunction() {
+        var x = document.getElementById("topbar");
+        if (x.className === "right") {
+            x.className += " responsive";
+        } else {
+            x.className = "right";
+        }
+    }
+</script>
+
+<!--google translate API-->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en' },
+            'google_translate_element'
+        );
+    } 
+</script>
+<script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </html>

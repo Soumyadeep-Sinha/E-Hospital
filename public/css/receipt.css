@@ -65,3 +65,10 @@ td {
 .print_btn{
     margin-left: 20px;
 }
+
+@media screen and (max-width: 800px){
+    .first_div{
+        flex-direction: column;
+        height: 20vh;
+    }
+}
