@@ -88,6 +88,10 @@ const userdata = new mongoose.Schema({
 /*initializing a model*/
 const userinputs = new mongoose.model("StoredDatas", userdata);
 
+//count of users
+const query = userinputs.find();
+
+
 /*main input function*/
 app.post("/register", async function (req, res) {
     const maindata = new userinputs({
@@ -138,7 +142,11 @@ app.post("/login", async function (req, res) {
             req.session.isAuth = true;
             console.log("Session ID -->" + req.session.id);
             console.log("success");
-            res.render("home", { theid: id, usrname: usrname})
+
+            const count = await userinputs.countDocuments();
+            console.log(count);
+            res.render("home", { theid: id, usrname: usrname, count: count});
+
             /*res.send("<h2>you are signed in, your unique user ID is : " + id+"</h2>");*/
         } else {
             var err_name = "Sign-in failed. (invalid credentials!). You can go back and try again."
@@ -286,6 +294,13 @@ app.get("/Psychiatry", function (req, res) {
         nameofroute: "/Psychiatry"
     });
 });
+app.get("/DonateBlood", function (req, res) {
+    res.render("Patient_registration", {
+        nameofdept: "Donate Blood",
+        nameofimg: "donate",
+        nameofroute: "/DonateBlood"
+    });
+});
 /*end of routes*/
 
 app.get("/Success", function (req, res) {
@@ -405,6 +420,32 @@ app.get("/Cardiology/:id", function (req, res) {
     });
 });
 app.get("/Cardiology/delete/:id", function (req, res) {
+    console.log(req.params.id)
+    cardioinputs.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("messagepage", { errmessage: "REGISTRATION CANCELLED",location:"" })
+        }
+    });
+});
+
+//donate blood
+app.get("/DonateBlood/:id", function (req, res) {
+    console.log(req.params.id)
+    cardioinputs.findById(req.params.id, function (err, user) {
+        if (err) {
+            res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("receipt", { users: user, routename: "DonateBlood" });
+        }
+    });
+});
+app.get("/DonateBlood/delete/:id", function (req, res) {
     console.log(req.params.id)
     cardioinputs.findByIdAndRemove(req.params.id, function (err) {
         if (err) {

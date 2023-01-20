@@ -216,6 +216,19 @@ body {
     transition: 0.5s;
 }
 
+#blood_donate{
+    margin: 10px 25px 10px 0;
+    background-color: #e92121;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#blood_donate:hover{
+    background-color: #7a0000;
+    transition: 0.5s;
+}
+
 .dept a{
     text-decoration: none;
     font-size: 24px;
@@ -226,6 +239,10 @@ body {
 .dept a:hover{
     color: rgb(110, 7, 7);
     transition: 0.5s;
+}
+
+#blood{
+    color: white;
 }
 
 @media screen and (max-width: 800px){
