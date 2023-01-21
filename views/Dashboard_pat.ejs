@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard_style.css">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+</head>
+
+<body>
+
+    <div class="departments">
+        <h1 class="heading">Dashboard</h1>
+        <form action="/dashboard/users" method="get" class="form_style">
+            <button type="submit" class="dept_btns">Users</button>
+        </form>
+        <form action="/dashboard/Anesthesiology" method="get" class="form_style">
+            <button type="submit" class="dept_btns">Anesthesiology department</button>
+        </form>
+        <form action="/dashboard/Cardiology" method="get" class="form_style">
+            <button type="submit" class="dept_btns">Cardiology department</button>
+        </form>
+        <form action="/dashboard/ENT" method="get" class="form_style">
+            <button type="submit" class="dept_btns">ENT department</button>
+        </form>
+        <form action="" method="get" class="form_style">
+            <button type="submit" class="dept_btns">Gastroenterology department</button>
+        </form>
+        <form action="" method="get" class="form_style">
+            <button type="submit" class="dept_btns">General surgery</button>
+        </form>
+        <form action="" method="get" class="form_style">
+            <button type="submit" class="dept_btns">Gynaecology department</button>
+        </form>
+        <form action="" method="get" class="form_style">
+            <button type="submit" class="dept_btns">Pediatrics department</button>
+        </form>
+        <form action="" method="get" class="form_style">
+            <button type="submit" class="dept_btns">Psychiatry department</button>
+        </form>
+        <form action="" method="get" class="form_style">
+            <button type="submit" class="dept_btns">Neurology department</button>
+        </form>
+        <form action="" method="get" class="form_style">
+            <button type="submit" class="dept_btns">Orthopaedic department</button>
+        </form>
+        <form action="" method="get" class="form_style">
+            <button type="submit" class="dept_btns">Urology department</button>
+        </form>
+        <form action="" method="get" class="form_style">
+            <button type="submit" class="dept_btns">Blood Donation</button>
+        </form>
+    </div>
+
+    <div class="display">
+        <div class="header">
+            <h2 class="heading2"> Admin </h2>
+            <form action="/logout" method="post">
+                <button type="submit" class="logout_btn"> Logout </button>
+            </form>
+            <div class="usefulbuttton">
+                <form action="" method="get" id="redirect-form" class="cancel" onsubmit="deleuser(); return false">
+                    <input type="text" name="del" id="del" placeholder="Enter the ID to confirm" class="inputid"
+                        required>
+                    <button class="useful_btn2"> Delete user </button>
+                </form>
+                <script>
+                    function deleuser() {
+                        window.location.href = "http://localhost:4000/user/deleteuser/" + document.getElementById("del").value;
+                    }
+                </script>
+                <form action="/update" method="get">
+                    <button type="submit" class="useful_btn3"> Update user </button>
+                </form>
+            </div>
+
+        </div>
+        <div class="table_section">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by phone number">
+            <table class="datas" id="myTable">
+
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Date of appointment</th>
+                    <th>Phone No.</th>
+                    <th>Email</th>
+                </tr>
+
+
+                <%x.forEach((y)=>{%>
+                    <tr>
+                        <td>
+                            <%=y._id%>
+                        </td>
+                        <td>
+                            <%=y.Name%>
+                        </td>
+                        <td>
+                            <%=y.Gender%>
+                        </td>
+                        <td>
+                            <%=y.Date%>
+                        </td>
+                        <td>
+                            <%=y.Phone_No%>
+                        </td>
+                        <td>
+                            <%=y.Email%>
+                        </td>
+                    </tr>
+                    <%})%>
+
+
+            </table>
+            <script>
+                function myFunction() {
+                    var input, filter, table, tr, td, i, txtValue;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("myTable");
+                    tr = table.getElementsByTagName("tr");
+                    for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[4];
+                        if (td) {
+                            txtValue = td.textContent || td.innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
+            </script>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

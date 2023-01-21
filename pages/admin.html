@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="../css/adminlogin_style.css">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+</head>
+
+<style>
+</style>
+
+<body>
+    <h1 class="heading">Admin access only.</h1>
+    <!--form section-->
+    <div class="form_section">
+        <div class="input_area">
+            <form class="signin_form" action="/" method="post">
+                <div class="mid">
+                    <p class="welcome_text">Login as admin</p>
+                </div>
+                <div class="avatar">
+                    <img src="../images/adminlogo.png" alt="">
+                </div>
+                <input class="fill_inputs" type="email" name="Email" id="" placeholder="📧 Enter admin email." required>
+                <input class="fill_inputs" type="password" name="cust_password" id=""
+                    placeholder="🔑 Enter password." minlength="6" maxlength="12" required>
+                <button class="register_btn form_buttons">Log-in</button>
+            </form>
+            <a href="http://localhost:3000/register" target="_blank">Not an admin?</a>
+        </div>
+    </div>
+</body>
+
+<!--responsive navbar-->
+<script>
+    function myFunction() {
+        var x = document.getElementById("topbar");
+        if (x.className === "right") {
+            x.className += " responsive";
+        } else {
+            x.className = "right";
+        }
+    }
+</script>
+
+<!--google translate API-->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en' },
+            'google_translate_element'
+        );
+    } 
+</script>
+<script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+</html>

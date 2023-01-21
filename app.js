@@ -89,7 +89,7 @@ const userdata = new mongoose.Schema({
 const userinputs = new mongoose.model("StoredDatas", userdata);
 
 //count of users
-const query = userinputs.find();
+const adminsource = userinputs.find();
 
 
 /*main input function*/
@@ -312,26 +312,38 @@ app.get("/Success", function (req, res) {
 /*schema for patients*/
 const patient_inputs = new mongoose.Schema({
     Department: { type: String, required: true },
-    Patient_Name: { type: String, required: true },
-    Patient_Age: { type: Number, required: true },
+    Name: { type: String, required: true },
+    Age: { type: Number, required: true },
     Gender: { type: String, required: true },
-    Contact_No: { type: String, required: true },
+    Phone_No: { type: String, required: true },
     Date: { type: Date, required: true },
-    Realation: { type: String }
+    Email: { type: String }
 });
 
 /*new models for each department*/
 const anesthesiainputs = new mongoose.model("AnesthesiologyDatas", patient_inputs);
+const cardioinputs = new mongoose.model("CardioLogyDatas", patient_inputs);
+const ENTinputs = new mongoose.model("ENTDatas", patient_inputs);
+const Gastroinputs = new mongoose.model("GastroenterologyDatas", patient_inputs);
+const Gynaecoinputs = new mongoose.model("GynaecologyDatas", patient_inputs);
+const Pediatricinputs = new mongoose.model("PediatricsDatas", patient_inputs);
+const Psychiatryinputs = new mongoose.model("PsychiatryDatas", patient_inputs);
+const Neuroinputs = new mongoose.model("NeurologyDatas", patient_inputs);
+const Orthoinputs = new mongoose.model("OrthopaedicDatas", patient_inputs);
+const Uroinputs = new mongoose.model("UrologyDatas", patient_inputs);
+const blooddonation = new mongoose.model("bloodDonation", patient_inputs);
+
 /*posting registrations*/
+/*anesthesia dept */
 app.post("/Anesthesiology", async function (req, res) {
     const patientdata = new anesthesiainputs({
         Department: "Anesthesiology Department",
-        Patient_Name: req.body.Patient_name,
-        Patient_Age: req.body.Patient_age,
+        Name: req.body.Patient_name,
+        Age: req.body.Patient_age,
         Gender: req.body.gender,
-        Contact_No: req.body.Contact_num,
+        Phone_No: req.body.Contact_num,
         Date: req.body.App_date,
-        Realation: req.body.Patient_Rel
+        Email: req.body.Patient_email
     });
     await patientdata.save(async function (err) {
         if (err) {
@@ -341,7 +353,7 @@ app.post("/Anesthesiology", async function (req, res) {
         } else {
             /*res.redirect("/login");*/
             const contact = req.body.Contact_num;
-            const found = await anesthesiainputs.findOne({ Contact_No: contact });
+            const found = await anesthesiainputs.findOne({ Phone_No: contact });
             var id = found._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
             console.log(patientdata)
             console.log("Patient registered successfully");
@@ -376,18 +388,16 @@ app.get("/Anesthesiology/delete/:id", function (req, res) {
     });
 });
 
-/* cardiology */
-const cardioinputs = new mongoose.model("CardiologyDatas", patient_inputs);
-/*posting registrations*/
+/*cardiology*/
 app.post("/Cardiology", async function (req, res) {
     const patientdata = new cardioinputs({
         Department: "Cardiology Department",
-        Patient_Name: req.body.Patient_name,
-        Patient_Age: req.body.Patient_age,
+        Name: req.body.Patient_name,
+        Age: req.body.Patient_age,
         Gender: req.body.gender,
-        Contact_No: req.body.Contact_num,
+        Phone_No: req.body.Contact_num,
         Date: req.body.App_date,
-        Realation: req.body.Patient_Rel
+        Email: req.body.Patient_email
     });
     await patientdata.save(async function (err) {
         if (err) {
@@ -397,7 +407,7 @@ app.post("/Cardiology", async function (req, res) {
         } else {
             /*res.redirect("/login");*/
             const contact = req.body.Contact_num;
-            const found = await cardioinputs.findOne({ Contact_No: contact });
+            const found = await cardioinputs.findOne({ Phone_No: contact });
             var id = found._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
             console.log(patientdata)
             console.log("Patient registered successfully");
@@ -432,10 +442,93 @@ app.get("/Cardiology/delete/:id", function (req, res) {
     });
 });
 
+//ent department
+app.post("/ENT", async function (req, res) {
+    const patientdata = new ENTinputs({
+        Department: "ENT Department",
+        Name: req.body.Patient_name,
+        Age: req.body.Patient_age,
+        Gender: req.body.gender,
+        Phone_No: req.body.Contact_num,
+        Date: req.body.App_date,
+        Email: req.body.Patient_email
+    });
+    await patientdata.save(async function (err) {
+        if (err) {
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page", { errmessage: error_name })
+            console.log(err);
+        } else {
+            /*res.redirect("/login");*/
+            const contact = req.body.Contact_num;
+            const found = await ENTinputs.findOne({ Phone_No: contact });
+            var id = found._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+            console.log(id);
+            res.render("patient_reg_success", { patid: id, routename: "ENT" })
+        }
+    })
+})
+
+app.get("/ENT/:id", function (req, res) {
+    console.log(req.params.id)
+    ENTinputs.findById(req.params.id, function (err, user) {
+        if (err) {
+            res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("receipt", { users: user, routename: "ENT" });
+        }
+    });
+});
+app.get("/ENT/delete/:id", function (req, res) {
+    console.log(req.params.id)
+    ENTinputs.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
+            /*console.log(err);*/
+        } else {
+            /*console.log(user);*/
+            res.render("messagepage", { errmessage: "REGISTRATION CANCELLED",location:"" })
+        }
+    });
+});
+
 //donate blood
+/*posting registrations*/
+app.post("/DonateBlood", async function (req, res) {
+    const patientdata = new blooddonation({
+        Department: "Blood Donation",
+        Name: req.body.Patient_name,
+        Age: req.body.Patient_age,
+        Gender: req.body.gender,
+        Phone_No: req.body.Contact_num,
+        Date: req.body.App_date,
+        Email: req.body.Patient_email
+    });
+    await patientdata.save(async function (err) {
+        if (err) {
+            var error_name = "Patient already registered in same department";
+            res.render("Error_Page", { errmessage: error_name })
+            console.log(err);
+        } else {
+            /*res.redirect("/login");*/
+            const contact = req.body.Contact_num;
+            const found = await blooddonation.findOne({ Phone_No: contact });
+            var id = found._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
+            console.log(patientdata)
+            console.log("Patient registered successfully");
+            console.log(id);
+            res.render("patient_reg_success", { patid: id, routename: "DonateBlood" })
+        }
+    })
+})
+
 app.get("/DonateBlood/:id", function (req, res) {
     console.log(req.params.id)
-    cardioinputs.findById(req.params.id, function (err, user) {
+    blooddonation.findById(req.params.id, function (err, user) {
         if (err) {
             res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
             /*console.log(err);*/
@@ -447,7 +540,7 @@ app.get("/DonateBlood/:id", function (req, res) {
 });
 app.get("/DonateBlood/delete/:id", function (req, res) {
     console.log(req.params.id)
-    cardioinputs.findByIdAndRemove(req.params.id, function (err) {
+    blooddonation.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
             res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
             /*console.log(err);*/
