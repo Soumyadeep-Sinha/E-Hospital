@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../public/css/homepage_style.css">
-    <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 <body>
@@ -19,8 +19,8 @@
         </div>
 
         <div class="right" id="topbar">
-            <a href="#">🏠 Home</a>
-            <a href="#">👤 Account info</a>
+            <a href="http://localhost:3000/">🏠 Home</a>
+            <a href="http://localhost:3000/user/<%=theid%>">👤 Account info</a>
             <a href="#">📋 your appointments</a>
             <a href="#">💊 Buy medicines</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -29,6 +29,12 @@
         </div>
 
     </header>
+    <div class="welcome">
+        <h2 class="welcome_txt">Welcome : <%=usrname%></h2>
+        <form action="/logout" method="post" class="logout">
+            <button class="logutbtn" type="submit">Logout</button>
+        </form>
+    </div>
     
     <!--second part-->
     <div class="content_box">
@@ -41,11 +47,7 @@
                 <li>Equipments are in stock.</li>
                 <li>Ambulance service available.</li>
                 <li>Job : Cleaning staff needed.</li>
-                <a href="http://localhost:3000/user/<%=theid%>">View or Update your Data.</a>
             </ul>
-            <form action="/logout" method="post" class="logout">
-                <button class="logutbtn" type="submit">Logout</button>
-            </form>
         </div>
         <!--right part-->
         <div class="category">
@@ -58,10 +60,11 @@
                 <li><a href="http://localhost:3000/General">General surgery</a></li>
                 <li><a href="http://localhost:3000/Gynaecology">Gynaecology department</a></li>
                 <li><a href="http://localhost:3000/Pediatrics">Pediatrics department</a></li>
+                <li><a href="http://localhost:3000/Psychiatry">Psychiatry department</a></li>
                 <li><a href="http://localhost:3000/Neurology">Neurology department</a></li>
                 <li><a href="http://localhost:3000/Orthopaedic">Orthopaedic department</a></li>
                 <li><a href="http://localhost:3000/Urology">Urology department</a></li>
-                <li><a href="http://localhost:3000/Psychiatry">Psychiatry department</a></li>
+                <li id="blood_donate"><a href="http://localhost:3000/DonateBlood" id="blood">Donate Blood</a></li>
             </ul>
         </div>
     </div>
@@ -70,14 +73,14 @@
     <div class="extras">
         <!--left part-->
         <div class="donate_blood">
-            <h1><a href=""><%=count%> users</a></h1>
+            <h1><%=count%> users</h1>
         </div>
         <!--right part-->
         <div class="contacts">
             <h2 class="contact_heading">Contact Us</h2>
             <ul class="details">
                 <li>Email: contactus@gmail.com</li>
-                <li>Contact No. : 0755-8555-3234</li>
+                <li>Contact No. : 0755-8***-3234</li>
                 <li>Address : ABC hospital, MP Nagar, Zone - 3, Bhopal</li>
             </ul>
         </div>

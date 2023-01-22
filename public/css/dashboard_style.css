@@ -87,6 +87,22 @@ body {
     transition: 0.5s;
 }
 
+.refresh_btn{
+    padding: 10px;
+    margin-right: 30px;
+    background-color: rgb(0, 221, 218);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.refresh_btn:hover {
+    background-color: rgb(0, 168, 154);
+    transition: 0.5s;
+}
+
 .useful_btn1 {
     padding: 10px;
     margin-right: 30px;

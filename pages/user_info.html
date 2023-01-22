@@ -7,7 +7,7 @@
         <title>User Details</title>
         <link rel="stylesheet" href="../public/css/user_info.css">
     
-        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
         
     </head>
@@ -20,8 +20,8 @@
         </div>
 
         <div class="right" id="topbar">
-            <a href="#">🏠 Home</a>
-            <a href="#">👤 Account info</a>
+            <a href="http://localhost:3000/">🏠 Home</a>
+            <a href="http://localhost:3000/update">👤 Update info</a>
             <a href="#">📋 your appointments</a>
             <a href="#">💊 Buy medicines</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -30,35 +30,26 @@
         </div>
     </header>
     <div class="olddata">
-        <p>UID : </p>
-        <p>Name : </p>
-        <p>Email : </p>
-        <P>phone NO. : </P>
-        <p>Password : </p>
+        <p>UID : <%=Users._id%></p>
+        <p>Name : <%=Users.Name%></p>
+        <p>Email : <%=Users.Email%></p>
+        <P>phone NO. : <%=Users.Phone_No%></P>
+        <p>Password : <%=Users.Password%></p>
+        <p>Note: copy the UID if u want to update user info</p>
     </div>
-    <div class="updatesection">
-        <form action="" class="newvals" method="get" id="redirect-form" onsubmit="redirect(); return false">
-            <input type="text" placeholder="Enter New Name" required>
-            <input type="email" placeholder="Enter New Email" required>
-            <input type="text" placeholder="Enter New Phone Number" required>
-            <input type="text" placeholder="Enter New Password" required>
-            <input type="text" name="del" id="del" placeholder="Enter the UID to confirm" class="uid_data" required>
-            <button type="submit">Update Values</button>
-        </form>
-        <script>
-            function redirect(){       
-                window.location.href="http://localhost:3000/<%=routename%>/delete/" + document.getElementById("del").value;              
-            }
-        </script>
+
+    <div class="link">
+        <a href="http://localhost:3000/update">CLICK HERE TO UPDATE DATA</a>
     </div>
+    
     <div class="delete">
-        <form action="" method="get" id="redirect-form" class="cancel" onsubmit="redirect(); return false">
+        <form action="" method="get" id="redirect-form" class="cancel" onsubmit="deleuser(); return false">
             <input type="text" name="del" id="del" placeholder="Enter the UID to confirm" class="uid_data" required>
             <button class="del_btn"> Delete Account </button>
         </form>
         <script>
-            function redirect(){       
-                window.location.href="http://localhost:3000/<%=routename%>/delete/" + document.getElementById("del").value;              
+            function deleuser(){       
+                window.location.href="http://localhost:3000/user/delete/" + document.getElementById("del").value;              
             }
         </script>
     </div>
@@ -74,4 +65,28 @@
     </div>
     
 </body>
+<!--responsive navbar-->
+<script>
+    function myFunction() {
+        var x = document.getElementById("topbar");
+        if (x.className === "right") {
+            x.className += " responsive";
+        } else {
+            x.className = "right";
+        }
+    }
+</script>
+
+<!--google translate API-->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en' },
+            'google_translate_element'
+        );
+    } 
+</script>
+<script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </html>

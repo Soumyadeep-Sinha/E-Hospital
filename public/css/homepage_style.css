@@ -89,7 +89,7 @@ body {
     width: 100vw;
     display: flex;
     flex-direction: row;
-    background-color: #CBEDD5;
+    background-color: #ffffff;
     padding: 20px;
     justify-content: space-between;
 }
@@ -144,13 +144,13 @@ body {
     display: flex;
     justify-content: center;
     padding: 50px;
-    background-color: #CBEDD5;
+    background-color: #ffffff;
 }
 
 .announcements{
     width: 40%;
     padding: 20px;
-    background-color: #ADE792;
+    background-color: #F3CCFF;
     margin-right: 50px;
     border-radius: 10px;
 }
@@ -274,16 +274,18 @@ body {
     display: flex;
     justify-content: center;
     padding: 50px;
-    background-color: #CBEDD5;
+    background-color: #ffffff;
 }
 
 .donate_blood{
     width: 40%;
     padding: 20px;
-    background-color: #ffbcbc;
+    background-color: #F9B5D0;
     margin-right: 50px;
     border-radius: 10px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .donate_blood a{

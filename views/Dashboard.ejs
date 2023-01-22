@@ -62,6 +62,9 @@
             <form action="/logout" method="post">
                 <button type="submit" class="logout_btn"> Logout </button>
             </form>
+            <form action="/dashboard/users" method="get">
+                <button type="submit" class="refresh_btn"> Refresh </button>
+            </form>
             <div class="usefulbuttton">
                 <form action="" method="get" id="redirect-form" class="cancel" onsubmit="deleuser(); return false">
                     <input type="text" name="del" id="del" placeholder="Enter the ID to confirm" class="inputid"

@@ -560,7 +560,7 @@ app.post("/logout", function(req,res){
         if(err){
             throw err;
         }else{
-            res.redirect("/");
+            res.redirect("/login");
         }
     })
 })
