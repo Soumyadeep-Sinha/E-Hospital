@@ -55,6 +55,8 @@ const isAuth = function(req,res,next){
     }
 }
 
+var sstatus = false;
+
 app.use(express.static('public'));
 
 app.get("/dashboard", function (req, res) {
@@ -101,6 +103,7 @@ app.post("/", async function (req, res) {
         var usrname = usermail.Name;
         if (usermail.Password === password) {
             req.session.isAuth = true;
+            sstatus = true;
             console.log("Session ID -->" + req.session.id);
             console.log("success");
 
@@ -150,47 +153,62 @@ const patient_inputs = new mongoose.Schema({
 const userinputs = new mongoose.model("StoredDatas", userdata);
 
 app.get("/dashboard/users", async function (req, res){
-    userinputs.find({})
-    .then((x)=>{
-        res.render("Dashboard", {x})
-    }).catch((y)=>{
-        console.log(y)
-    })
+    if(sstatus){
+        userinputs.find({})
+        .then((x)=>{
+            res.render("Dashboard", {x})
+        }).catch((y)=>{
+            console.log(y)
+        })
+    }else{
+        res.redirect("/")
+    }
+    
 })
 
 const updateuser = mongoose.model("StoredDatas", userdata);
 
 app.post("/update", function (req, res) {
-    const maindata = new updateuser({
-        _id: req.body.upd_uid,
-        Name: req.body.new_name,
-        Phone_No: req.body.new_phone,
-        Email: req.body.new_email,
-        Password: req.body.new_pwd
-    });
-    console.log("we have id ==>",req.body.upd_uid)
-    updateuser.findByIdAndUpdate(req.body.upd_uid, maindata, function (err, user) {
-        if (err) {
-            res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
-        } else {
-            console.log("newname ==>", req.body.new_name)
-            res.sendFile(__dirname + "/pages/Dasboard.html")
-        }
-    });
+    if(sstatus){
+        const maindata = new updateuser({
+            _id: req.body.upd_uid,
+            Name: req.body.new_name,
+            Phone_No: req.body.new_phone,
+            Email: req.body.new_email,
+            Password: req.body.new_pwd
+        });
+        console.log("we have id ==>",req.body.upd_uid)
+        updateuser.findByIdAndUpdate(req.body.upd_uid, maindata, function (err, user) {
+            if (err) {
+                res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
+            } else {
+                console.log("newname ==>", req.body.new_name)
+                res.sendFile(__dirname + "/pages/Dasboard.html")
+            }
+        });
+    }
+    else{
+        res.redirect("/")
+    }
     
 });
 
 app.get("/user/deleteuser/:id", function (req, res) {
-    console.log(req.params.id)
-    userinputs.findByIdAndRemove(req.params.id, function (err) {
-        if (err) {
-            res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
-            /*console.log(err);*/
-        } else {
-            /*console.log(user);*/
-            res.sendFile(__dirname + "/pages/Dasboard.html")
-        }
-    });
+    if(sstatus){
+        console.log(req.params.id)
+        userinputs.findByIdAndRemove(req.params.id, function (err) {
+            if (err) {
+                res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
+                /*console.log(err);*/
+            } else {
+                /*console.log(user);*/
+                res.sendFile(__dirname + "/pages/Dasboard.html")
+            }
+        });
+    }else{
+        res.redirect("/")
+    }
+    
 });
 /* user section ends */
 
@@ -209,44 +227,65 @@ const blooddonation = new mongoose.model("bloodDonation", patient_inputs);
 
 
 app.get("/dashboard/Anesthesiology", async function (req, res){
-    anesthesiainputs.find({})
-    .then((x)=>{
-        res.render("Dashboard_pat", {x})
-    }).catch((y)=>{
-        console.log(y)
-    })
+    if(sstatus){
+        anesthesiainputs.find({})
+        .then((x)=>{
+            res.render("Dashboard_pat", {x})
+        }).catch((y)=>{
+            console.log(y)
+        })
+    }
+    else{
+        res.redirect("/")
+    }
 })
 
 app.get("/dashboard/Cardiology", async function (req, res){
-    cardioinputs.find({})
-    .then((x)=>{
-        res.render("Dashboard_pat", {x})
-    }).catch((y)=>{
-        console.log(y)
-    })
+    if(sstatus){
+        cardioinputs.find({})
+        .then((x)=>{
+            res.render("Dashboard_pat", {x})
+        }).catch((y)=>{
+            console.log(y)
+        })
+    }
+    else{
+        res.redirect("/")
+    }
 })
 
 app.get("/dashboard/ENT", async function (req, res){
-    ENTinputs.find({})
-    .then((x)=>{
-        res.render("Dashboard_pat", {x})
-    }).catch((y)=>{
-        console.log(y)
-    })
+    if(sstatus){
+        ENTinputs.find({})
+        .then((x)=>{
+            res.render("Dashboard_pat", {x})
+        }).catch((y)=>{
+            console.log(y)
+        })
+    }
+    else{
+        res.redirect("/")
+    }
 })
 
 app.get("/dashboard/Gastroenterology", async function (req, res){
-    Gastroinputs.find({})
-    .then((x)=>{
-        res.render("Dashboard_pat", {x})
-    }).catch((y)=>{
-        console.log(y)
-    })
+    if(sstatus){
+        Gastroinputs.find({})
+        .then((x)=>{
+            res.render("Dashboard_pat", {x})
+        }).catch((y)=>{
+            console.log(y)
+        })
+    }
+    else{
+        res.redirect("/")
+    }
 })
 
 
 
 app.post("/logout", function(req,res){
+    sstatus = false;
     req.session.destroy(function(err){
         if(err){
             throw err;
