@@ -82,8 +82,11 @@
             </div>
 
         </div>
+        <div class="search">
+            <input type="text" id="myInput" onkeyup="myFunction0()" placeholder="Search by phone number">
+            <input type="text" id="myInput1" onkeyup="myFunction1()" placeholder="Search by id">
+        </div>
         <div class="table_section">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by phone number">
             <table class="datas" id="myTable">
 
                 <tr>
@@ -118,7 +121,7 @@
 
             </table>
             <script>
-                function myFunction() {
+                function myFunction0() {
                     var input, filter, table, tr, td, i, txtValue;
                     input = document.getElementById("myInput");
                     filter = input.value.toUpperCase();
@@ -126,6 +129,25 @@
                     tr = table.getElementsByTagName("tr");
                     for (i = 0; i < tr.length; i++) {
                         td = tr[i].getElementsByTagName("td")[3];
+                        if (td) {
+                            txtValue = td.textContent || td.innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
+
+                function myFunction1() {
+                    var input, filter, table, tr, td, i, txtValue;
+                    input = document.getElementById("myInput1");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("myTable");
+                    tr = table.getElementsByTagName("tr");
+                    for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[0];
                         if (td) {
                             txtValue = td.textContent || td.innerText;
                             if (txtValue.toUpperCase().indexOf(filter) > -1) {

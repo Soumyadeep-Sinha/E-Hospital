@@ -88,6 +88,7 @@
 
                 <tr>
                     <th>Id</th>
+                    <th>Booked By ID</th>
                     <th>Name</th>
                     <th>Gender</th>
                     <th>Date of appointment</th>
@@ -100,6 +101,9 @@
                     <tr>
                         <td>
                             <%=y._id%>
+                        </td>
+                        <td>
+                            <%=y.BookedBy%>
                         </td>
                         <td>
                             <%=y.Name%>
@@ -129,7 +133,7 @@
                     table = document.getElementById("myTable");
                     tr = table.getElementsByTagName("tr");
                     for (i = 0; i < tr.length; i++) {
-                        td = tr[i].getElementsByTagName("td")[4];
+                        td = tr[i].getElementsByTagName("td")[5];
                         if (td) {
                             txtValue = td.textContent || td.innerText;
                             if (txtValue.toUpperCase().indexOf(filter) > -1) {

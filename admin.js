@@ -79,7 +79,7 @@ const admindata = new mongoose.Schema({
 /*initializing a model*/
 const admininputs = new mongoose.model("adminData", admindata);
 
-/*const firstdata = new userinputs({
+/*const firstdata = new admininputs({
     Name: "admin",
     Phone_No: "000000000",
     Email: "admin@gmail.com",
@@ -106,7 +106,7 @@ app.post("/", async function (req, res) {
 
             const count = await userinputs.countDocuments();
             console.log(count);
-            res.sendFile(__dirname + "/pages/Dasboard.html")
+            res.redirect("/dashboard")
 
             /*res.send("<h2>you are signed in, your unique user ID is : " + id+"</h2>");*/
         } else {
@@ -136,6 +136,7 @@ const userdata = new mongoose.Schema({
 
 /*schema for patients*/
 const patient_inputs = new mongoose.Schema({
+    BookedBy : { type: String, required: true },
     Department: { type: String, required: true },
     Name: { type: String, required: true },
     Age: { type: Number, required: true },

@@ -164,9 +164,24 @@ body {
 #myInput{
     padding: 10px;
     margin-bottom: 10px;
+    margin-left: 10px;
     width: 30%;
     border: 1px solid black;
     border-radius: 5px;
+}
+
+#myInput1{
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.search{
+    display: flex;
+    padding: 20px 20px 0px 20px;
 }
 
 table,

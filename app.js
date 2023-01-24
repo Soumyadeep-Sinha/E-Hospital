@@ -126,6 +126,8 @@ app.post("/register", async function (req, res) {
     console.log("hello")
 });
 
+let newid = "";
+
 /*sign in function*/
 app.post("/login", async function (req, res) {
     try {
@@ -136,7 +138,8 @@ app.post("/login", async function (req, res) {
         console.log(password);
         console.log(usermail);
         console.log(usermail.Password);*/
-        var id = usermail._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
+        id = usermail._id.toString().replace(/ObjectId\("(.*)"\)/, "$1");
+        newid = id;
         var usrname = usermail.Name;
         if (usermail.Password === password) {
             req.session.isAuth = true;
@@ -145,6 +148,7 @@ app.post("/login", async function (req, res) {
 
             const count = await userinputs.countDocuments();
             console.log(count);
+            console.log(newid);
             res.render("home", { theid: id, usrname: usrname, count: count});
 
             /*res.send("<h2>you are signed in, your unique user ID is : " + id+"</h2>");*/
@@ -162,20 +166,25 @@ app.post("/login", async function (req, res) {
     }
 });
 
-
 /*creating USER CRUD FUNCTIONS*/
 app.get("/user/:id", function (req, res) {
-    console.log(req.params.id)
-    userinputs.findById(req.params.id, function (err, user) {
-        if (err) {
-            res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
-            /*console.log(err);*/
-        } else {
-            /*console.log(user);*/
-            console.log("First function call : ", user);
-        }
-        res.render("user_info", { Users: user });
-    });
+    if(req.session.isAuth){
+        console.log(req.params.id)
+        userinputs.findById(req.params.id, function (err, user) {
+            if (err) {
+                res.render("Error_Page", { errmessage: "RECORD NOT FOUND" });
+                /*console.log(err);*/
+            } else {
+                /*console.log(user);*/
+                console.log("First function call : ", user);
+            }
+            res.render("user_info", { Users: user });
+        });
+    }
+    else{
+        res.redirect("/login");
+    }
+    
 });
 
 const updateuser = mongoose.model("StoredDatas", userdata);
@@ -311,6 +320,7 @@ app.get("/Success", function (req, res) {
 
 /*schema for patients*/
 const patient_inputs = new mongoose.Schema({
+    BookedBy : { type: String, required: true },
     Department: { type: String, required: true },
     Name: { type: String, required: true },
     Age: { type: Number, required: true },
@@ -337,6 +347,7 @@ const blooddonation = new mongoose.model("bloodDonation", patient_inputs);
 /*anesthesia dept */
 app.post("/Anesthesiology", async function (req, res) {
     const patientdata = new anesthesiainputs({
+        BookedBy: id,
         Department: "Anesthesiology Department",
         Name: req.body.Patient_name,
         Age: req.body.Patient_age,
@@ -345,6 +356,7 @@ app.post("/Anesthesiology", async function (req, res) {
         Date: req.body.App_date,
         Email: req.body.Patient_email
     });
+    console.log(id);
     await patientdata.save(async function (err) {
         if (err) {
             var error_name = "Patient already registered in same department";
@@ -391,6 +403,7 @@ app.get("/Anesthesiology/delete/:id", function (req, res) {
 /*cardiology*/
 app.post("/Cardiology", async function (req, res) {
     const patientdata = new cardioinputs({
+        BookedBy: id,
         Department: "Cardiology Department",
         Name: req.body.Patient_name,
         Age: req.body.Patient_age,
@@ -445,6 +458,7 @@ app.get("/Cardiology/delete/:id", function (req, res) {
 //ent department
 app.post("/ENT", async function (req, res) {
     const patientdata = new ENTinputs({
+        BookedBy: id,
         Department: "ENT Department",
         Name: req.body.Patient_name,
         Age: req.body.Patient_age,
@@ -500,6 +514,7 @@ app.get("/ENT/delete/:id", function (req, res) {
 /*posting registrations*/
 app.post("/DonateBlood", async function (req, res) {
     const patientdata = new blooddonation({
+        BookedBy: id,
         Department: "Blood Donation",
         Name: req.body.Patient_name,
         Age: req.body.Patient_age,
@@ -554,6 +569,41 @@ app.get("/DonateBlood/delete/:id", function (req, res) {
 /*similarly other departments can be created*/
 /*this is a demo project so i did not create routes for all departments*/
 
+/*appointments for each department*/
+app.get("/Appointments", function(req,res){
+    res.sendFile(__dirname + "/pages/Appointments.html");
+})
+
+app.get("/Appointments/Anesthesiology", async function (req,res) {
+    console.log("id is -> " + newid);
+    anesthesiainputs.find({BookedBy: newid})
+    .then((x)=>{
+        res.render("Appointments", {x})
+    }).catch((y)=>{
+        console.log(y)
+    })
+})
+
+app.get("/Appointments/Cardiology", async function (req,res) {
+    console.log("id is -> " + newid);
+    cardioinputs.find({BookedBy: newid})
+    .then((x)=>{
+        res.render("Appointments", {x})
+    }).catch((y)=>{
+        console.log(y)
+    })
+})
+
+app.get("/Appointments/ENT", async function (req,res) {
+    console.log("id is -> " + newid);
+    ENTinputs.find({BookedBy: newid})
+    .then((x)=>{
+        res.render("Appointments", {x})
+    }).catch((y)=>{
+        console.log(y)
+    })
+})
+/*end of appointments section */
 /*logut function*/
 app.post("/logout", function(req,res){
     req.session.destroy(function(err){
