@@ -1,0 +1,197 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('./images/medical-technology.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.left_side{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-right: 20px;
+}
+
+.branding{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background-color: #000000b8;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.links{
+    font-size: 25px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    margin: 10px;
+    transition: 0.5s;
+}
+
+.links:hover{
+    color: rgb(243, 255, 72);
+    transition: 0.5s;
+}
+
+.logout_btn{
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 28px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    transition: 0.5s;
+}
+
+.logout_btn:hover{
+    background-color: rgb(106, 0, 0);
+    transition: 0.5s;
+}
+
+.rules{
+    background-color: #ea1414b5;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.rules h1{
+    text-align: center;
+}
+
+.rules li{
+    font-size: 28px;
+}
+
+.chat_section{
+    margin-left: 20px;
+    width: 50%;
+}
+
+.heading{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid none;
+    background-color: #000000b3;
+    border-radius: 10px 10px 0px 0px;
+    color: rgb(235, 235, 235);
+}
+
+.brand_logo{
+    margin-left: 20px;
+    height: 50px;
+    width: 120px;
+}
+
+.brand_text{
+    margin-right: 20px;
+}
+
+.message_area{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 400px;
+    padding: 10px;
+    border: 1px solid none;
+    background: linear-gradient(90deg, #00067caf, #14005ab3);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.message{
+    padding: 10px;
+}
+
+.incoming{
+    display: flex;
+    width: auto;
+    padding: 10px;
+    max-width: 50%;
+    margin-left: auto;
+    flex-direction: column;
+}
+
+.incoming p{
+    /*border: 1px solid grey;*/
+    padding: 10px;
+    border-radius: 20px 20px 0 20px;
+    background-color: rgb(239, 221, 252);
+}
+
+.incoming h4{
+    text-align: center;
+    margin: 0px;
+    color: white;
+}
+
+
+.outgoing{
+    padding: 10px;
+    display: flex;
+    width: auto;
+    max-width: 50%;
+    margin-right: auto;
+    flex-direction: column;
+}
+
+.outgoing p{
+    /*border: 1px solid grey;*/
+    padding: 10px;
+    border-radius: 20px 20px 20px 0;
+    background-color: rgb(204, 243, 255);
+}
+
+.outgoing h4{
+    text-align: center;
+    margin: 0px;
+    color: white;
+}
+
+textarea{
+    margin-top: 0px;
+    width: 100%;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 30px;
+    outline: none;
+    border: 2px solid none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px;
+    word-wrap: break-word;
+    resize: none;
+    background-color: #ffffff;
+    color: rgb(45, 45, 45);
+    font-size: 20px;
+}
+
+
+/*.send_btn{
+    width: 10%;
+    height: 50px;
+    margin: 0;
+    padding: 5px;
+    border: 1px solid transparent;
+    font-size: 24px;
+    background-color: skyblue;
+    transition: 0.5s;
+}
+
+.send_btn:hover{
+    background-color: rgb(144, 245, 191);
+    transition: 0.5s;
+}*/

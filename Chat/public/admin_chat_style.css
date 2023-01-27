@@ -1,0 +1,135 @@
+html,body{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(208, 230, 250);
+}
+.box{
+    width: 900px;
+}
+.header{
+    text-align: center;
+}
+
+.chat_section{
+    width: 100%;
+    display: flex;
+}
+
+.heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid none;
+    background-color: #000000b3;
+    border-radius: 10px 10px 0px 0px;
+    color: rgb(235, 235, 235);
+}
+
+.brand_logo{
+    margin-left: 20px;
+    height: 50px;
+    width: 120px;
+}
+
+.brand_text{
+    margin-right: 20px;
+}
+
+.message_area{
+    width: 880px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 500px;
+    padding: 10px;
+    border: 1px solid none;
+    background-color: rgb(110, 110, 110);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.message{
+    padding: 10px;
+}
+
+.incoming{
+    display: flex;
+    width: auto;
+    padding: 10px;
+    max-width: 50%;
+    margin-left: auto;
+    flex-direction: column;
+}
+
+.incoming p{
+    /*border: 1px solid grey;*/
+    padding: 10px;
+    background-color: rgb(239, 221, 252);
+}
+
+.incoming h4{
+    text-align: center;
+    margin: 0px;
+    color: rgb(255, 255, 255);
+}
+
+
+.outgoing{
+    padding: 10px;
+    display: flex;
+    width: auto;
+    max-width: 50%;
+    margin-right: auto;
+    flex-direction: column;
+}
+
+.outgoing p{
+    /*border: 1px solid grey;*/
+    padding: 10px;
+    background-color: rgb(204, 243, 255);
+}
+
+.outgoing h4{
+    text-align: center;
+    margin: 0px;
+    color: rgb(239, 243, 15);
+}
+
+textarea{
+    margin: 20px;
+    width: 400px;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 550px;
+    outline: none;
+    border: 2px solid none;
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px;
+    word-wrap: break-word;
+    resize: none;
+    background-color: #ffffff;
+    color: rgb(45, 45, 45);
+    font-size: 20px;
+}
+
+.send_btn{
+    width: 10%;
+    height: 50px;
+    margin: 0;
+    padding: 5px;
+    border: 1px solid transparent;
+    font-size: 12px;
+    background-color: skyblue;
+    transition: 0.5s;
+    border-radius: 5px;
+}
+
+.send_btn:hover{
+    background-color: rgb(144, 245, 191);
+    transition: 0.5s;
+}

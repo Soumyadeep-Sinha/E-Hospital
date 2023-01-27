@@ -1,0 +1,16 @@
+{
+  "name": "chatbox",
+  "version": "1.0.0",
+  "description": "This is a simple chatbox anyone can chat with everone at the same time.\r The whole world can chat as a group.\r :)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "socket.io": "^4.5.4"
+  }
+}

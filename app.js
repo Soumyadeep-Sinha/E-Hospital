@@ -10,6 +10,7 @@ const ejs = require("ejs");
 
 /*initializing the modules*/
 const app = express();
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 /*ending initialization*/
@@ -73,7 +74,6 @@ app.get("/login", function (req, res) {
 app.get("/update", function (req, res) {
     res.sendFile(__dirname + "/pages/acoount_update_page.html");
 });
-
 /*declaring mongoose schema for user registration*/
 
 const userdata = new mongoose.Schema({
@@ -604,6 +604,9 @@ app.get("/Appointments/ENT", async function (req,res) {
     })
 })
 /*end of appointments section */
+
+/*chatbox function*/
+
 /*logut function*/
 app.post("/logout", function(req,res){
     req.session.destroy(function(err){

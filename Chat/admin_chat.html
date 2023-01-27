@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Chat Box</title>
+    <link rel="stylesheet" href="./admin_chat_style.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+    <h1 class="header">Chat Box : Admin (Refreshing the page will delete chats)</h1>
+    <section class="chat_section">
+        <div>
+            <textarea id="mymsg" cols="30" rows="60" placeholder="Reply..."></textarea>
+        </div>
+        <div class="box">
+            <div class="heading">
+                <img src="./images/logo.png" alt="" class="brand_logo">
+                <button class="send_btn send_btn1" type="submit" onclick="quicksend1()">Nice to meet you</button>
+                <button class="send_btn send_btn2" type="submit" onclick="quicksend2()">Tell us about your problem</button>
+                <button class="send_btn send_btn3" type="submit" onclick="quicksend3()">tell us more</button>
+                <button class="send_btn send_btn4" type="submit" onclick="quicksend4()">Contact us on the helpline No.</button>
+                <button class="send_btn send_btn5" type="submit" onclick="quicksend5()">Our HelpLine - 0755 8888 6532</button>
+                <h2 class="brand_text">Reply</h2>
+            </div>
+    
+            <div class="message_area"></div>
+            <div class="incoming"></div>
+        </div>
+        
+    </section>
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+    <!--<script src="/user.js"></script>-->
+    <script>
+        const socket = io()
+        let name = "Admin"
+        let textarea = document.querySelector('#mymsg')
+        let messageArea = document.querySelector('.message_area')
+        /*do {
+            name = prompt('Please enter a username to start : ')
+        } while (!name)*/
+
+        textarea.addEventListener('keyup', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage(e.target.value)
+            }
+        })
+
+        function quicksend1(){
+            sendMessage(document.querySelector('.send_btn1').innerHTML)
+        }
+        function quicksend2(){
+            sendMessage(document.querySelector('.send_btn2').innerHTML)
+        }
+        function quicksend3(){
+            sendMessage(document.querySelector('.send_btn3').innerHTML)
+        }
+        function quicksend4(){
+            sendMessage(document.querySelector('.send_btn4').innerHTML)
+        }
+        function quicksend5(){
+            sendMessage(document.querySelector('.send_btn5').innerHTML)
+        }
+
+        function appendMessage(msg, type) {
+            let mainDiv = document.createElement('div')
+            let className = type
+            mainDiv.classList.add(className, 'message')
+
+            let markup = `
+        <h4>${msg.user}</h4>
+        <p>${msg.message}</p>
+    `
+            mainDiv.innerHTML = markup
+            messageArea.appendChild(mainDiv)
+        }
+
+        function sendMessage(message) {
+            let msg = {
+                user: name,
+                message: message.trim()
+            }
+            // Append 
+            appendMessage(msg, 'outgoing')
+            textarea.value = ''
+            scrollToBottom()
+
+            // Send to server 
+            socket.emit('message', msg)
+
+        }
+
+        // Recieve messages 
+        socket.on('message', function (msg) {
+            appendMessage(msg, 'incoming')
+            scrollToBottom()
+        })
+
+        function scrollToBottom() {
+            messageArea.scrollTop = messageArea.scrollHeight
+        }
+
+    </script>
+    
+</body>
+
+</html>
