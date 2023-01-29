@@ -1,6 +1,6 @@
 Project created BY Soumyadeep Sinha
 
-PLEASE READ THE CONTENTS IN ORDER TO AVOID ERRORS
+### PLEASE READ THE CONTENTS IN ORDER TO AVOID ERRORS
 
 Thank you for visiting my page.
 This is a hospital management project based on MongoDB and Mongoose
@@ -10,12 +10,12 @@ Tools used :
 3) EJS
 4) HTML
 5) CSS
-6) NPM --> express, body-parser, ejs, mongoose, express-sessions,mongodb-session
+6) NPM --> express, body-parser, ejs, mongoose, express-sessions, mongodb-session, socket.io.
 
 NOTE : The project is configured to run on Localhost:3000 by default.
 but can be configured to run on cloud MongoDB Atlas Servers.
 
-Functionalities :
+### Functionalities for user: 
 
 --> User can create an account
 --> login using the credentials
@@ -27,8 +27,9 @@ Functionalities :
 --> User can register any patient in any department (currently : in Anesthesiology and cardiology)
 --> then they can print receipt 
 --> if required they can cancel the registration.
+--> NEW : Users can now view their appointments.
 
-Features :
+### Features :
 --> Dynamic Home page 
 --> Dynamic Patient Registration Page.
 --> Full CRUD functions to the USER.
@@ -38,11 +39,43 @@ Features :
 --> Mobile optimized.
 --> Dynamic error and alert pages.
 
-Things to take care : 
+### Additional Functions
 
---> Navigation bar (header) is partially fuctional (I plan to change the navbar style in future).
+--> Admin control.
+--> Dedicated pages and server for Admin.
+--> Complete control to Admin.
+--> NEW : Chatbox feature added for both user and Admin.
+--> Secure authentication enabled for admin and some userside routes.
+
+### Things to take care : 
+
 --> additional Node modules might be needed.
 --> The app.js has some console logs wich are unecessary but I have kept them for debugging purposes.
+--> the project needs to run on three independent servers to work with full functionality.
 
+### Installation: ###
+Make sure to open the terminal in the correct directory.
 
-### the app can crash under some cicumstances most of them are handled by errors but still few may occour. ###
+--> install the following modules in the main folder. (run the following commands in terminal.)
+1) npm i express
+2) npm i body-parser
+3) npm i mongodb-sessions
+4) npm i express-sessions
+5) npm i mongoose
+6) npm i ejs
+
+--> install the following modules in the Chat folder. (run the following commands in terminal.)
+1) npm i express
+2) npm i socket.io
+
+-->optional module
+1) nodemon can be installed to easier operation.
+
+Running the project
+1) In the main folder run the app.js file using node or nodemon --> this will run in localhost:3000
+1) In the same folder run the admin.js file using node or nodemon --> this will run on localhost:4000
+3) In the Chat folder run the chat_server.js file using node or nodemon --> this will run on localhost:3500
+
+~ All modern browsers are supported.
+
+### the app can crash under some cicumstances most of them are handled but still few may occour. ###
