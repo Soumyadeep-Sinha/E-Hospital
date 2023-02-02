@@ -21,13 +21,12 @@ but can be configured to run on cloud MongoDB Atlas Servers.
 --> login using the credentials
 --> view or update information 
 --> deregester (delete account)
-
 --> Now after login, a session will be created and the session can be destroyed after clicking logout button.
-
 --> User can register any patient in any department (currently : in Anesthesiology and cardiology)
 --> then they can print receipt 
 --> if required they can cancel the registration.
 --> NEW : Users can now view their appointments.
+--> NEW : Users can now delete appointments or print receipt for particular appointment.
 
 ### Features :
 --> Dynamic Home page 
@@ -45,6 +44,7 @@ but can be configured to run on cloud MongoDB Atlas Servers.
 --> Dedicated pages and server for Admin.
 --> Complete control to Admin.
 --> NEW : Chatbox feature added for both user and Admin.
+--> NEW : Now admin can delete patients or see their receipt.
 --> Secure authentication enabled for admin and some userside routes.
 
 ### Things to take care : 
