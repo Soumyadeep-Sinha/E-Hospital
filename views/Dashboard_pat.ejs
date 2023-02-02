@@ -65,7 +65,7 @@
             <form action="/logout" method="post">
                 <button type="submit" class="logout_btn"> Logout </button>
             </form>
-            <form action="/dashboard" method="get">
+            <form action="/dashboard/users" method="get">
                 <button type="submit" class="refresh_btn"> Refresh </button>
             </form>
             <div class="usefulbuttton">
@@ -126,10 +126,10 @@
                             <%=y.Email%>
                         </td>
                         <td>
-                            <a href="http://localhost:3000/<%=route%>/delete/<%=y._id%>">Delete</a>
+                            <a href="http://localhost:3000/<%=route%>/delete/<%=y._id%>"><i class="fas fa-trash"></i></a>
                         </td>
                         <td>
-                            <a href="http://localhost:3000/<%=route%>/<%=y._id%>" target="_blank">Receipt</a>
+                            <a href="http://localhost:3000/<%=route%>/<%=y._id%>" target="_blank"><i class="fas fa-eye receipt"></i></a>
                         </td>
                         
                     </tr>

@@ -201,3 +201,11 @@ th{
     text-align: center;
     color: white;
 }
+
+i{
+    color: red;
+    font-size: 20px;
+}
+.receipt{
+    color: rgb(96, 159, 0);
+}
