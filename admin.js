@@ -230,7 +230,7 @@ app.get("/dashboard/Anesthesiology", async function (req, res){
     if(sstatus){
         anesthesiainputs.find({})
         .then((x)=>{
-            res.render("Dashboard_pat", {x})
+            res.render("Dashboard_pat", {x, route:"Anesthesiology"})
         }).catch((y)=>{
             console.log(y)
         })
@@ -244,7 +244,7 @@ app.get("/dashboard/Cardiology", async function (req, res){
     if(sstatus){
         cardioinputs.find({})
         .then((x)=>{
-            res.render("Dashboard_pat", {x})
+            res.render("Dashboard_pat", {x, route:"Cardiology"})
         }).catch((y)=>{
             console.log(y)
         })
@@ -258,7 +258,7 @@ app.get("/dashboard/ENT", async function (req, res){
     if(sstatus){
         ENTinputs.find({})
         .then((x)=>{
-            res.render("Dashboard_pat", {x})
+            res.render("Dashboard_pat", {x, route:"ENT"})
         }).catch((y)=>{
             console.log(y)
         })
@@ -272,7 +272,7 @@ app.get("/dashboard/Gastroenterology", async function (req, res){
     if(sstatus){
         Gastroinputs.find({})
         .then((x)=>{
-            res.render("Dashboard_pat", {x})
+            res.render("Dashboard_pat", {x, route:"Gastroenterology"})
         }).catch((y)=>{
             console.log(y)
         })

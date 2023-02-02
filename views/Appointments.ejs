@@ -65,6 +65,8 @@
                     <th>Date</th>
                     <th>Phone No</th>
                     <th>Email</th>
+                    <th>Delete</th>
+                    <th>Receipt</th>
                 </tr>
 
                 <%x.forEach((y)=>{%>
@@ -86,6 +88,12 @@
                         </td>
                         <td>
                             <%=y.Email%>
+                        </td>
+                        <td>
+                            <a href="http://localhost:3000/<%=route%>/delete/<%=y._id%>">Delete</a>
+                        </td>
+                        <td>
+                            <a href="http://localhost:3000/<%=route%>/<%=y._id%>" target="_blank">Receipt</a>
                         </td>
                     </tr>
                     <%})%>

@@ -578,7 +578,7 @@ app.get("/Appointments/Anesthesiology", async function (req,res) {
     console.log("id is -> " + newid);
     anesthesiainputs.find({BookedBy: newid})
     .then((x)=>{
-        res.render("Appointments", {x})
+        res.render("Appointments", {x, route:"Anesthesiology"})
     }).catch((y)=>{
         console.log(y)
     })
@@ -588,7 +588,7 @@ app.get("/Appointments/Cardiology", async function (req,res) {
     console.log("id is -> " + newid);
     cardioinputs.find({BookedBy: newid})
     .then((x)=>{
-        res.render("Appointments", {x})
+        res.render("Appointments", {x, route:"Cardiology"})
     }).catch((y)=>{
         console.log(y)
     })
@@ -598,7 +598,7 @@ app.get("/Appointments/ENT", async function (req,res) {
     console.log("id is -> " + newid);
     ENTinputs.find({BookedBy: newid})
     .then((x)=>{
-        res.render("Appointments", {x})
+        res.render("Appointments", {x, route:"ENT"})
     }).catch((y)=>{
         console.log(y)
     })
