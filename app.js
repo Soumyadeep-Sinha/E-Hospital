@@ -56,11 +56,17 @@ const isAuth = function(req,res,next){
     }
 }
 
+let safe = false;
+
 /*creating routes*/
 app.use(express.static('public'));
 
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/pages/index.html");
+});
+
+app.get("/Emergency", function (req, res) {
+    res.sendFile(__dirname + "/pages/Emergency.html");
 });
 
 app.get("/register", function (req, res) {
@@ -149,6 +155,7 @@ app.post("/login", async function (req, res) {
             const count = await userinputs.countDocuments();
             console.log(count);
             console.log(newid);
+            safe = true;
             res.render("home", { theid: id, usrname: usrname, count: count});
 
             /*res.send("<h2>you are signed in, your unique user ID is : " + id+"</h2>");*/
@@ -571,7 +578,12 @@ app.get("/DonateBlood/delete/:id", function (req, res) {
 
 /*appointments for each department*/
 app.get("/Appointments", function(req,res){
-    res.sendFile(__dirname + "/pages/Appointments.html");
+    if(safe == true){
+        res.sendFile(__dirname + "/pages/Appointments.html");
+    }
+    else{
+        res.redirect("/login")
+    }
 })
 
 app.get("/Appointments/Anesthesiology", async function (req,res) {
@@ -609,6 +621,7 @@ app.get("/Appointments/ENT", async function (req,res) {
 
 /*logut function*/
 app.post("/logout", function(req,res){
+    safe = false;
     req.session.destroy(function(err){
         if(err){
             throw err;
