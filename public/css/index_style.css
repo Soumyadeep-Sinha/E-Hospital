@@ -15,13 +15,16 @@ body {
     width: 100%;
     height: 50vh;
     justify-content: center;
-    background-color: black;
+    background: url("../images/blue-layout-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 20px;
 }
 
 .mainsection{
     display: flex;
     padding: 20px;
+    background-color: #B4E4FF;
 }
 
 .buttons{
@@ -38,15 +41,15 @@ body {
     font-size: 26px;
     margin: 20px;
     width: 80%;
-    background-color: bisque;
-    color: navy;
+    background-color: #4E31AA;
+    color: white;
     border-radius: 10px;
     transition: 1s;
 }
 
 .usefulbtns:hover{
-    background-color: rgb(253, 207, 151);
-    color: rgb(128, 0, 0);
+    background-color: #3A1078;
+    color: white;
     transition: 1s;
 }
 

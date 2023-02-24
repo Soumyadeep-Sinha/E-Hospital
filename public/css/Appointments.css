@@ -21,7 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     /*border: 2px solid red;*/
-    background-color: #2D033B;
+    background-color: #18122B;
 }
 
 .form_style {
@@ -32,17 +32,17 @@ body {
     width: 100%;
     margin-top: 10px;
     padding: 10px;
-    background-color: #810CA8;
+    background-color: #443C68;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(255, 255, 255);
     font-weight: bold;
     font-size: 15px;
-    border-radius: 50px;
+    border-radius: 5px;
     transition: 0.5s;
 }
 
 .dept_btns:hover {
-    background-color: #C147E9;
+    background-color: #393053;
     transition: 0.5s;
 }
 
@@ -50,7 +50,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 80%;
-    background-color: #f0d1fa;
+    background-color: #635985;
 }
 
 .table_section {
