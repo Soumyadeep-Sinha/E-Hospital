@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-hospital</title>
+    <link rel="stylesheet" href="../css/index_style.css">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1d0033;">
+        <a class="navbar-brand" href="#">
+            <img src="../images/favicon.ico" width="30" height="30" alt="">
+        </a>
+        <a class="navbar-brand" href="#" style="color: red;">e-Hospital</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link navlinks" href="#" style="color: white">About us <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link navlinks" href="#carouselExampleCaptions" style="color: white">Features</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link navlinks" href="http://localhost:3000/login" style="color: white">👤 Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="first_div">
+        <img src="../images/index_page_logo.png" alt="index logo">
+    </div>
+    <div class="mainsection">
+        <div class="buttons">
+            <a href="http://localhost:3000/register" class="usefulbtns">New User? Register Now</a>
+            <a href="http://localhost:3000/login" class="usefulbtns">Sign-in To continue.</a>
+            <a href="http://localhost:3000/Emergency" class="emergency">EMERGENCY</a>
+            <a href="http://localhost:3500/" class="usefulbtns" target="_blank">Chat with us</a>
+        </div>
+        <div class="announcements">
+            <h2 class="alerts">Notice</h2>
+            <ul class="updates">
+                <li>Online portal will be closed till saturday for routine maintainence.</li>
+                <li>Equipments are in stock.</li>
+                <li>Ambulance service available.</li>
+                <li>Job : Cleaning staff needed.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../images/Multi-Specialty.jpg" class="d-block w-100" alt="..." style="height:750px">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Multispeciality</h5>
+                    <p>We have specialists in every department.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../images/affordable-health.jpg" class="d-block w-100" alt="..." style="height:750px">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Affordable Healthcare</h5>
+                    <p>Prices that dont't give you a heart attack.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../images/easy-to-use.jpg" class="d-block w-100" alt="..." style="height:750px">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Easy to use</h5>
+                    <p>Easy and seamless registration.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../images/medicines.webp" class="d-block w-100" alt="..." style="height:750px">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Discounted medicines</h5>
+                    <p>Get all in one place.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </button>
+    </div>
+
+    <div class="usercount">
+        <h1>5000 + users registered.</h1>
+        <h2>30000 + patients treated.</h2>
+    </div>
+
+
+    <!--footer-->
+    <div class="footer_panel">
+        <footer id="footer">
+            <p class="copyright-text">©2022-2023 Hospital.LLC . All Rights Reserved.</p>
+            <a class="terms_and_conditions" href="" target="_blank">Terms and Conditions</a>
+            <div id="google_translate_element">Translate this page</div>
+            <p class="bottom text"> proudly, Made in India ❤️</p>
+
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+</body>
+
+<!--google translate API-->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            { pageLanguage: 'en' },
+            'google_translate_element'
+        );
+    } 
+</script>
+<script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</html>

@@ -90,7 +90,8 @@ body {
 .heading{
     text-align: center;
     padding: 20px;
-    background-color: #F3CCFF;
+    background-color: #050046;
+    color: white;
     margin: 0;
 }
 
@@ -101,7 +102,7 @@ body {
 /*form area*/
 
 .patientinfo{
-    background-color: #F0DBDB;
+    background-color: #e0d2ff;
     width: 50%;
     padding: 30px;
 }
@@ -115,28 +116,36 @@ body {
 .register_patient{
     display: flex;
     flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.538);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 input{
     margin: 20px 0;
-    width: 80%;
+    width: 100%;
     padding: 10px;border: 1px solid grey;
     border-radius: 10px;
 }
 
-.btn{
+label{
+    text-align: center;
+}
+
+.sub-btn{
     margin-top: 20px;
-    width: 80%;
-    margin-left: 10px;
+    width: 50%;
+    margin-left: 5px;
     padding: 10px;border: 1px solid grey;
     border-radius: 10px;
     font-weight: bold;
-    background-color: rgb(41, 243, 176);
+    background-color: rgb(85, 237, 156);
+    transition: 1s;
 }
 
-.btn:hover{
-    background-color: aquamarine;
-    transition: 0.5s;
+.sub-btn:hover{
+    background-color: rgb(112, 203, 140);
+    transition: 1s;
 }
 
 .goback{
@@ -163,13 +172,18 @@ input{
     border: 1px solid grey;
 }
 
+.radio_options p{
+    text-align: center;
+    margin: 10px;
+}
+
 .category{
     display: flex;
     flex-direction: column;
 }
 
 .image{
-    background-color: #F0DBDB;
+    background-color: #e0d2ff;
     display: flex;
     justify-content: center;
     padding: 30px;
@@ -178,7 +192,8 @@ input{
 }
 
 .image img{
-    width: 500px;
+    width: 600px;
+    height: 700px;
     border: 5px solid rgb(89, 89, 90);
     border-radius: 30px;
 }

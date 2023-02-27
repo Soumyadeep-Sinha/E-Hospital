@@ -8,6 +8,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
 /*first div*/
 
 .first_div{
@@ -25,6 +26,7 @@ body {
     display: flex;
     padding: 20px;
     background-color: #B4E4FF;
+    justify-content: space-between;
 }
 
 .buttons{
@@ -51,6 +53,7 @@ body {
     background-color: #3A1078;
     color: white;
     transition: 1s;
+    text-decoration: none;
 }
 
 .emergency{
@@ -69,14 +72,15 @@ body {
     background-color: rgb(102, 0, 0);
     color: yellow;
     transition: 1s;
+    text-decoration: none;
 }
 
 .announcements{
     font-size: 20px;
-    width: 40%;
+    width: 50%;
     padding: 20px;
     background-color: #ADE792;
-    margin-right: 50px;
+    margin-right: 20px;
     border-radius: 10px;
 }
 .alerts{
@@ -131,4 +135,10 @@ body {
     .buttons{
         width: 100%;
     }
+}
+
+.usercount{
+    padding: 20px;
+    text-align: center;
+    background-color: aquamarine;
 }

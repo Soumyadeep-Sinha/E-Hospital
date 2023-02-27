@@ -57,12 +57,11 @@ const isAuth = function(req,res,next){
 }
 
 let safe = false;
-
 /*creating routes*/
 app.use(express.static('public'));
 
 app.get("/", function (req, res) {
-    res.sendFile(__dirname + "/pages/index.html");
+    res.render("index");
 });
 
 app.get("/Emergency", function (req, res) {
