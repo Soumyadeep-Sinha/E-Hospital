@@ -9,12 +9,15 @@
     
         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         
     </head>
 <body>
-    <!--header-->
+    <!--header
     <header class="header_panel">
-        <!--left for logo-->
+        left for logo
         <div class="top_image">
             <a href="#" class="logo_link"><img class="navbar_header_image" src="../images/logo.png" alt="logo"></a>
         </div>
@@ -28,13 +31,38 @@
                 <i class="fa fa-bars"></i>
             </a>
         </div>
-    </header>
+    </header>-->
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1d0033;">
+        <a class="navbar-brand" href="#">
+            <img src="../images/favicon.ico" width="30" height="30" alt="">
+        </a>
+        <a class="navbar-brand" href="#" style="color: red;">e-Hospital</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link navlinks" href="http://localhost:3000/" style="color: white">🏠 Home<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link navlinks" href="http://localhost:3000/Appointments" style="color: white">📋 Appointments</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link navlinks" href="http://localhost:3000/update" style="color: rgb(255, 234, 0)">👤 Update info</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="olddata">
-        <p>UID : <%=Users._id%></p>
-        <p>Name : <%=Users.Name%></p>
-        <p>Email : <%=Users.Email%></p>
-        <P>phone NO. : <%=Users.Phone_No%></P>
-        <p>Password : <%=Users.Password%></p>
+        <p>UID :&nbsp;&nbsp; <%=Users._id%></p>
+        <p>Name :&nbsp;&nbsp; <%=Users.Name%></p>
+        <p>Email :&nbsp;&nbsp; <%=Users.Email%></p>
+        <P>phone No. :&nbsp;&nbsp; <%=Users.Phone_No%></P>
+        <p>Password :&nbsp;&nbsp; <%=Users.Password%></p>
         <p>Note: copy the UID if u want to update user info</p>
     </div>
 
@@ -63,6 +91,13 @@
 
         </footer>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
     
 </body>
 <!--responsive navbar-->

@@ -8,6 +8,7 @@ body {
     overflow-y: hidden;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
+    background-color: rgb(203, 252, 202);
 }
 
 .heading {
@@ -186,6 +187,7 @@ body {
 
 table,
 td {
+    background-color: white;
     border: 2px solid rgb(57, 0, 0);
     border-collapse: collapse;
     padding: 10px;
@@ -194,7 +196,7 @@ td {
 }
 
 th{
-    background-color: grey;
+    background-color: rgb(42, 42, 42);
     border: 2px solid rgb(57, 0, 0);
     border-collapse: collapse;
     padding: 10px;
