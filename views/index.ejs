@@ -37,6 +37,9 @@
                 <li class="nav-item active">
                     <a class="nav-link navlinks" href="http://localhost:3000/login" style="color: white">👤 Login</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link navlinks" style="color: white" id="todaytxt"></a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -118,7 +121,7 @@
     <!--footer-->
     <div class="footer_panel">
         <footer id="footer">
-            <p class="copyright-text">©2022-2023 Hospital.LLC . All Rights Reserved.</p>
+            <p class="copyright-text" id="datetxt"> </p>
             <a class="terms_and_conditions" href="" target="_blank">Terms and Conditions</a>
             <div id="google_translate_element">Translate this page</div>
             <p class="bottom text"> proudly, Made in India ❤️</p>
@@ -145,5 +148,14 @@
 </script>
 <script type="text/javascript"
     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+    let time = new Date()
+    let year = time.getUTCFullYear()
+    let month = time.getUTCMonth()+1
+    let day = time.getDate()
+    document.getElementById("datetxt").innerHTML = "copyright " + year + " E-Hospital All Rights Reserved"
+    document.getElementById("todaytxt").innerHTML= "Date : "+ day + " - " + month + " - " + year
+</script>
 
 </html>
